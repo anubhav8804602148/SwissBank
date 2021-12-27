@@ -1,0 +1,51 @@
+label{
+    margin-bottom:5px;
+}
+.labelButton{
+    color: blue;
+    text-decoration: underline overline;
+}
+.formHeader{
+    text-align: center;
+    font-size: 200%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.already{
+    font-size: 80%;
+}
+.formBodyAllFields{
+    min-height: 250px;
+}
+.submitField{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.Footer{
+    padding-left: 100px;
+    position: fixed;
+    bottom: 0px;
+    font-size: 10px;
+    background-color:grey;
+    color:white;
+    min-width: 100%;
+    max-width: 100%;
+}
+.Form, .Notice{
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.Notice{
+    min-height: 100%;
+}
+.NoticeHeader{
+    text-align: center;
+    font-size: 200%;
+}
+.NavBar{
+    position:static;
+    left: 0;
+}
+Body{
+    overflow: hidden;
+}

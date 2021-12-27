@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script src="js/index.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="NavBar col-lg-12">
+        <img class="headerLogo" src="resources/headerLogo.png"></img>
+    </div>
+    <div class="row">
+        <div class="FormNotice col-lg-4">
+            <div ng-app="loginApp" ng-controller="loginController" class="Form col-lg-12">
+                <form class="loginRegisterFormClass col-lg-12" onSubmit="">
+                    <div><label class="formHeader col-lg-12">Sign In</label></div>
+                    <div class="formBodyAllFields">
+                        <div><label class="inputLabel col-lg-6">User Id</label><input class="col-lg-6" type="text"
+                                placeholder="Username" ng-model="userId"></input></div>
+                        <div><label class="col-lg-6">Password</label><input class="col-lg-6" type="password"
+                                placeholder="password" ng-model="password"></input></div>
+                        <div class="submitField"><input class="col-lg-6" type="submit" text="Log In" ng-click="handleLogin()"></input></div>
+                    </div>
+                    <div><label class="already col-lg-6">Not registered Yet?</label><label class="already labelButton"
+                            onClick="">Register</label></div>
+                </form>
+                <form class="loginRegisterFormClass col-lg-12">
+                    <div><label class="formHeader col-lg-12">Register</label></div>
+                    <div class="formBodyAllFields">
+                        <div><label class="col-lg-6">First Name</label><input class="col-lg-6" type="text"
+                                placeholder="First Name"></input></div>
+                        <div><label class="col-lg-6">Last Name</label><input class="col-lg-6" type="text"
+                                placeholder="Last Name"></input></div>
+                        <div><label class="col-lg-6">Email</label><input class="col-lg-6" type="email"
+                                placeholder="email"></input></div>
+                        <div><label class="col-lg-6">Password</label><input class="col-lg-6" type="password"
+                                placeholder="password"></input></div>
+                        <div><label class="col-lg-6">Confirm Password</label><input class="col-lg-6" type="password"
+                                placeholder="confirm password"></input></div>
+                        <div><input type="checkbox"></input><label>Accept T&C?</label></div>
+                        <div class="submitField"><input class="col-lg-6" type="submit"></input></div>
+                    </div>
+                    <div><label class="already col-lg-6">Registered Already?</label><label class="already labelButton"
+                            onClick="">Login</label></div>
+
+                </form>
+            </div>
+            <div class="Notice col-lg-12">
+                <label class="col-lg-12 NoticeHeader">Notice</label>
+            </div>
+        </div>
+        <div class="AdsColumn col-lg-4">
+            Ads
+        </div>
+    </div>
+    <div class='Footer col-lg-12'>
+        <label class="footerBody">&copy; Copyright 2021 United Nation. World Bank</label>
+    </div>
+</body>
+
+</html>

@@ -4,21 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
-@RestController
+@Controller
 public class UserController {
 	
 	@Autowired
-	UserRepository userRepo;
-	
+	private UserRepository userRepo;
+
 	@RequestMapping(value="/users", method=RequestMethod.GET)
 	public @ResponseBody List<User> getAllUsers(){
 		return userRepo.findAll();
@@ -87,7 +85,5 @@ public class UserController {
 	public @ResponseBody HttpStatus deleteUserById(@PathVariable("id") int id) {
 		userRepo.deleteById(id);
 		return HttpStatus.OK;
-	}
-	
-	
+	}	
 }

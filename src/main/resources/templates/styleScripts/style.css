@@ -1,0 +1,64 @@
+form{
+	background-color:white;
+	padding:15px;	
+}
+.row{
+	padding:5px;
+}
+label{
+	padding:5px;
+	margin:5px;
+}
+input{
+	padding:5px;
+	margin:5px;
+}
+
+.bodyHeaderIcon{
+	position: static;
+	height: 70px;
+	border-radius: 50%;
+}
+.bodyHeaderMessage{
+	position: static;
+	font-size: 70px;
+}
+
+header{
+	margin-left: 8vw;
+	border-radius: 30%;
+	border-color: black;
+	border-style:solid ;
+	width: fit-content;
+	height: 150px;
+	background-image: linear-gradient(to bottom, rgb(166, 206, 243), rgb(0, 117, 222));
+}
+body{
+	background-image: linear-gradient(270deg, rgb(0, 117, 222),  rgb(166, 206, 243));
+}
+.cropImage{
+	position: static;
+	height: 70px;
+	border-radius: 50%;
+}
+form{
+	border-radius:10%;
+}
+.errorMessage{
+	position:relative;
+	font-size:30px;
+	color:red;
+	margin-top:30px;
+	text-align:center;
+}
+.loggedInUserData{
+	position:fixed;
+	top:5%;
+	right:5%;
+	color:white;
+	font-size:20px;
+}
+.acionTab{
+	margin-left:8%;
+	margin-top:8%;
+}

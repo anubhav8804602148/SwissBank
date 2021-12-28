@@ -8,6 +8,4 @@ public class SwissBankApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SwissBankApplication.class, args);
 	}
-	
-	
 }

@@ -1,12 +1,10 @@
 package com.cs.swiss;
 
-import javax.persistence.Column; 
+import javax.persistence.Column;  
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
@@ -28,24 +26,20 @@ public class User {
 	private String password;
 	
 	@Column(nullable=false)
-	private String designation;
+	private String designation="CUSTOMER";
 	
 	@Column(nullable=false)
-	private String role;
+	private String role="USER";
 
-	User(){
+	public User(){
 		
 	}
 	
-	public User(int id, String fname, String lname, String email, String password, String designation, String role) {
-		super();
-		this.id = id;
+	public User(String fname, String lname, String email, String password) {
 		this.fname = fname;
 		this.lname = lname;
 		this.email = email;
 		this.password = password;
-		this.designation = designation;
-		this.role = role;
 	}
 	public int getId() {
 		return id;
@@ -84,8 +78,7 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		this.password = encoder.encode(password);
+		this.password = password;
 	}
 
 	public String getDesignation() {
@@ -110,7 +103,8 @@ public class User {
 	}
 	public String toString(boolean showPass) {
 		if(showPass) return String.format(
-			"{fname: %s, lname: %s, email: %s, password: %s, designation: %s, role: %s}",
+			"{Id: %d, fname: %s, lname: %s, email: %s, password: %s, designation: %s, role: %s}",
+			this.id,
 			this.fname,
 			this.lname,
 			this.email,
@@ -118,7 +112,8 @@ public class User {
 			this.designation,
 			this.role);
 		return String.format(
-				"{fname: %s, lname: %s, email: %s, designation: %s, role: %s}",
+				"{id: %d, fname: %s, lname: %s, email: %s, designation: %s, role: %s}",
+			this.id,
 			this.fname,
 			this.lname,
 			this.email,

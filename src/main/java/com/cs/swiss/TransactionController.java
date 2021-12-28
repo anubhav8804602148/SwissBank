@@ -1,30 +1,29 @@
 package com.cs.swiss;
 
-import java.util.List; 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class TransactionController {
-	@Autowired
-	UserRepository userRepo;
 	
 	@Autowired
-	AccountRepository accountRepo;
-	
+	private AccountRepository accountRepo;
 	@Autowired
-	TransactionRepository transactionRepo;
-	
+	private TransactionRepository transactionRepo;
+	@Autowired
+	private UserRepository userRepo;
+
 	@RequestMapping(value="/transactions",method=RequestMethod.GET)
-	public List<Transaction> getAllTransactions(){
+	public @ResponseBody List<Transaction> getAllTransactions(){
 		return transactionRepo.findAll();
 	}
 	

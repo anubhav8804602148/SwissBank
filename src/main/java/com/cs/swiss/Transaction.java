@@ -7,10 +7,16 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column(nullable=false)
 	private String type;
+	
+	@Column(nullable=false)
+	private long fromAccountNumber;
 
+	@Column(nullable=false)
+	private String IFSCCode;
+	
 	@Column(nullable=false)
 	private long accountNumber;
 
@@ -102,5 +108,21 @@ public class Transaction {
 
 	public void setAccountNumber(long accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+
+	public long getFromAccountNumber() {
+		return fromAccountNumber;
+	}
+
+	public void setFromAccountNumber(long fromAccountNumber) {
+		this.fromAccountNumber = fromAccountNumber;
+	}
+
+	public String getIFSCCode() {
+		return IFSCCode;
+	}
+
+	public void setIFSCCode(String iFSCCode) {
+		IFSCCode = iFSCCode;
 	}
 }

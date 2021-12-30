@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 	
+	/*
+	 *  "/users"
+	 *  "/users/{id}"
+	 * 
+	 */
+	
 	@Autowired
 	private UserRepository userRepo;
 

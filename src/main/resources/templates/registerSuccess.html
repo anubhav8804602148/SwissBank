@@ -12,9 +12,15 @@
     <title>Registered | Swiss Bank</title>    
 </head>
 <body>
+	
 	<header>
-		<div><img class="bodyHeaderIcon" src="favicon.png"></div><div class="wordart slate"><span class="text bodyHeaderMessage">Swiss Bank</span></div>
+		<img src="logo_title.png">
 	</header>
-
+	<div class="loggedInUserData">
+		<form class="logoutForm" th:action="@{/login}">
+			<input type="submit" value="Sign In">
+		</form>
+	</div>
+	<div class="successMessage"><h1>Successfully Registered!</h1></div>
 </body>
 </html>

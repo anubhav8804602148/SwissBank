@@ -23,7 +23,6 @@
 			<input type="submit" value="logout">
 		</form>
 	</div>
-	
 	<div class="row">
 		<div class="actionTab col-lg-4">
 			<nav>
@@ -36,7 +35,17 @@
 			</nav>
 		</div>
 		<div class="menuTab col-lg-8">
-			<h1 style="color:white;">I will put all latest offers here. Later. </h1>
+			<form method="POST" class="transactMoney" th:action="@{/processTransaction}" th:object="${transaction}">
+					<div class="row"><h1>Fund Transfer</h1></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">From Account</label>
+					<select class="col-lg-6 col-sm-6" th:field="*{fromAccountNumber}">
+						<option th:each="account : ${accounts}" th:value="${account}" th:text="${account}"></option>
+					</select></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Recepient's Account Number</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Recepient's Account Number" th:field="*{accountNumber}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">IFSC Code</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter IFSC Code" th:field="*{IFSCCode}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Amount</label><input class="col-lg-6 col-sm-6" type="number" placeholder="Enter Amount" th:field="*{debitedAmount}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4"></label><input class="col-lg-4 col-sm-4" type="submit" value="Transfer"></div>
+			</form>
 		</div>
 	</div>
 </body>

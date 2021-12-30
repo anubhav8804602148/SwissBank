@@ -14,25 +14,6 @@ input{
 	margin:5px;
 }
 
-.bodyHeaderIcon{
-	position: static;
-	height: 70px;
-	border-radius: 50%;
-}
-.bodyHeaderMessage{
-	position: static;
-	font-size: 70px;
-}
-
-header{
-	margin-left: 8vw;
-	border-radius: 30%;
-	border-color: black;
-	border-style:solid ;
-	width: fit-content;
-	height: 150px;
-	background-image: linear-gradient(to bottom, rgb(166, 206, 243), rgb(0, 117, 222));
-}
 body{
 	background-image: linear-gradient(270deg, rgb(0, 117, 222),  rgb(166, 206, 243));
 }
@@ -46,7 +27,6 @@ form{
 }
 .errorMessage{
 	position:relative;
-	font-size:30px;
 	color:red;
 	margin-top:30px;
 	text-align:center;
@@ -62,3 +42,102 @@ form{
 	margin-left:8%;
 	margin-top:8%;
 }
+.successMessage{
+	text-align:center;
+}
+.accountNumberInfo, .userIdInfo, .individualAccountSummary{
+	display:inline;
+}
+.accountNumberInfo{
+	float:left;
+}
+.userIdInfo{
+	float:right;
+}
+.accountSummaryHeader{
+	position:relative;
+	border:1px solid #400080;
+	background-color:rgb(0, 117, 222);
+	color: white;	
+	border-radius:10%;
+}
+.accountSummaryBody{
+	display:none;
+	position:relative;
+	margin-top:50px;
+	background-color:white;
+	color:rgb(0, 117, 222);
+}
+.accountSummaryHeader:hover > .accountSummaryBody{
+	display:block;
+}
+div{
+	overflow:hidden;
+}
+body{
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+.hidden{
+	display:none;
+}
+.logoutForm{
+	padding:0px;
+	background-color: transparent;
+}
+.logoutForm > input{
+	background-color:rgb(0, 117, 222);
+}
+
+table{
+	margin-top:10px;
+	border:1px solid rgb(0, 117, 222);
+	color:white;
+}
+td{
+	border: 3px solid rgb(0, 0, 222);
+}
+thead > tr > td{	
+	background-color:rgb(0, 117, 222);
+}
+
+header > img{
+	height:200px;
+	border-radius:30%;
+}
+
+/* 
+.bodyHeaderIcon{
+	position: fixed;
+	height: 70px;
+	border-radius: 50%;
+	left:250px;
+}
+
+header{
+	margin-left: 8vw;
+	border-radius: 30%;
+	border-color: black;
+	border-style:solid ;
+	width: 380px;
+	height: 200px;
+	background-image: linear-gradient(to bottom, rgb(166, 206, 243), rgb(0, 117, 222));
+}
+
+.bodyHeaderMessage{
+	position: fixed;
+	top:45px;
+	left:135px;
+	font-size: 70px;
+	font-family: "Times New Roman", Times, serif;
+	padding:15px;
+}
+.bodyHeaderMessage > .bankSlogan{
+	font-size:20px;
+	text-decoration:overline underline;
+	color:yellow;
+}
+
+.container > header{
+	margin-left:3.5vw;
+} */

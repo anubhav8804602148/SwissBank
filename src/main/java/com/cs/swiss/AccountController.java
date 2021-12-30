@@ -1,10 +1,14 @@
 package com.cs.swiss;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class AccountController {
+	/*
+	 *	"/accounts"
+	 *	"/accounts/{id}"
+	 *  "/createNewAccount"
+	 *  "/processNewAccount"
+	 */
 	
 	@Autowired
 	private AccountRepository accountRepo;
@@ -80,4 +90,42 @@ public class AccountController {
 		accountRepo.deleteById(id);
 		return HttpStatus.OK;
 	}
+	
+
+	@GetMapping("/accountSummary")
+	public String showAccountSummary(Model model, String error, String logout) {
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		model.addAttribute("email", email);
+		List<Account> accountList = accountRepo.findByUserId(email);
+		model.addAttribute("countOfAccount", accountList.size());
+		model.addAttribute("accountList",accountList);
+		return "AccountSummary";
+	}
+	
+	
+	@RequestMapping(value="/createNewAccount", method=RequestMethod.GET)
+	public String showNewAccountForm(Model model) {
+		model.addAttribute("user", userRepo.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
+		model.addAttribute("accountType", new String());
+		return "createNewAccount";
+	}
+	
+	@RequestMapping(value="/processNewAccount", method=RequestMethod.POST)
+	public String processNewAccount(User user, Model model) {
+		Account account = new Account(user.getEmail());
+		account.setCategory(user.getTempString());
+		user.setTempString("");
+		List<Account> existingAccounts = accountRepo
+				.findByUserId(user.getEmail())
+				.stream()
+				.filter(acc -> acc.getCategory().equals(account.getCategory()))
+				.collect(Collectors.toList());
+		if(existingAccounts.size()>0) {
+			return "error";
+		}
+		userRepo.save(user);
+		accountRepo.save(account);
+		return "AccountSummary";
+	}
+	
 }

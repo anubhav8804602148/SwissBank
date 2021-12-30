@@ -23,7 +23,6 @@
 			<input type="submit" value="logout">
 		</form>
 	</div>
-	
 	<div class="row">
 		<div class="actionTab col-lg-4">
 			<nav>
@@ -36,7 +35,46 @@
 			</nav>
 		</div>
 		<div class="menuTab col-lg-8">
-			<h1 style="color:white;">I will put all latest offers here. Later. </h1>
+			<div th:if="${countOfTransaction!=0}">
+				<div class="AllTransactionDetails">
+					<table>
+						<thead>
+							<tr>
+								<td>Transaction Id</td>
+								<td>Status</td>
+								<td>Credited Amount</td>
+								<td>Debited Amount</td>
+								<td>Date of Transaction</td>
+								<td>Type of Transaction</td>
+								<td>From Account Number</td>
+								<td>To Account Number</td>
+								<td>Approved</td>
+								<td>Approval Required</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="transaction : ${transactions}">
+								<td th:text="${transaction.id}"></td>
+								<td th:text="${transaction.status}"></td>
+								<td th:text="${transaction.creditedAmount}"></td>
+								<td th:text="${transaction.debitedAmount}"></td>
+								<td th:text="${transaction.dateOfTransaction}"></td>
+								<td th:text="${transaction.type}"></td>
+								<td th:text="${transaction.fromAccountNumber}"></td>
+								<td th:text="${transaction.accountNumber}"></td>
+								<td th:text="${transaction.approved}"></td>
+								<td th:text="${transaction.approvalRequired}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div th:if="${countOfTransaction==0}">
+			<h3 style="color:white;">
+				You haven't made any transactions yet. Please consider giving us a chance.
+				<a href="/transferFunds">transact</a>
+			</h3>
+			</div>
 		</div>
 	</div>
 </body>

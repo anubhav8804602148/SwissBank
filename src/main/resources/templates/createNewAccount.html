@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" th:href="favicon.png" />
+		<meta charset="ISO-8859-1">
+		<script src="styleScripts/jquery.js" type="text/javascript"></script>
+		<script src="styleScripts/angular.js" type="text/javascript"></script>
+		<script src="styleScripts/script.js" type="text/javascript"></script>
+		<script src="styleScripts/bootstrap.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="styleScripts/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="styleScripts/style.css"/>
+    <title>Register | Swiss Bank</title>
+</head>
+<body>
+	<div class="container flex-container">
+		
+	<header>
+		<img src="logo_title.png">
+	</header>
+	<div class="loggedInUserData">
+		<form class="logoutForm" th:action="@{/login}">
+			<input type="submit" value="Sign In">
+		</form>
+	</div>
+	    <div class="row">
+	    	<div class="emptyArea col-lg-4">
+	    	</div>
+	    	<div class="Form col-lg-4 col-sm-4">
+				<form th:action="@{/processNewAccount}" method="POST" th:object="${user}" class="registerForm">
+					<div class="row"><h1>User KYC</h1></div>
+					<div class="row"><h5>We need few additional info about you to create your account</h3></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">Id</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{id}"></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">First Name</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{fname}"></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">Last Name</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{lname}"></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">Email</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{email}"></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">Password</label><input class="col-lg-6 col-sm-6" type="password" placeholder="Enter Father's name" th:field="*{password}"></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">Designation</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{designation}"></div>
+					<div class="row hidden"><label class="col-lg-4 col-sm-4">Role</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{role}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Father's Name</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Father's name" th:field="*{fathersName}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Present Address</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter present address" th:field="*{currentAddress}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Permanent Address</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter permanent address" th:field="*{address}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Aadhaar Number</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter aadhaar number" th:field="*{aadhaarNumber}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Zip Code</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter residential pincode" th:field="*{zipCode}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Maritial Status</label><select class="col-lg-6 col-sm-6" placeholder="Enter maritial Status" th:field="*{maritialStatus}">
+						<option value="Single">Single</option>
+						<option value="Married">Married</option>
+						<option value="Divorced">Divorced</option>
+						<option value="Widow/Widower">widow/widower</option>
+						<option value="PNTS">Can't mention</option>
+					</select></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Gender</label><select class="col-lg-6 col-sm-6" placeholder="Enter gender" th:field="*{gender}">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+						<option value="PNTS">Can't mention</option>
+					</select></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Qualification</label><select class="col-lg-6 col-sm-6" placeholder="Enter Qualification" th:field="*{qualification}">
+						<option value="NonMetric">Non-Matriculate</option>
+						<option value="Matriculation">Matriculation</option>
+						<option value="Intermediate">Intermediate</option>
+						<option value="Graduation">Graduation</option>
+						<option value="PostGraduation">Post-Graduation</option>
+						<option value="Doctorate">Doctorate</option>
+					</select></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Occupation</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter Occupation" th:field="*{occupation}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Salary</label><input class="col-lg-6 col-sm-6" type="number" placeholder="Enter Salary" th:field="*{salary}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Account Type</label><select class="col-lg-6 col-sm-6" placeholder="Enter Account Type" th:field="*{tempString}">
+						<option value="SAVING">SAVING</option>
+						<option value="CURRENT">CURRENT</option>
+						<option value="CREDIT">CREDIT</option>
+					</select></div>
+					<div class="row"><label class="col-lg-4 col-sm-4"></label><input class="col-lg-4 col-sm-4" type="submit" value="Register"></div>
+				</form>
+	    	</div>
+	    	<div class="Footer">
+	    		
+	    	</div>
+	    </div>
+	</div>
+</body>
+</html>

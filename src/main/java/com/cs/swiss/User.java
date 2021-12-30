@@ -19,7 +19,7 @@ public class User {
 	@Column(nullable=false)
 	private String lname;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	private String email;
 	
 	@Column(nullable=false)
@@ -30,6 +30,29 @@ public class User {
 	
 	@Column(nullable=false)
 	private String role="USER";
+	
+	@Column
+	private String fathersName;
+	@Column
+	private String address;
+	@Column
+	private String currentAddress;
+	@Column
+	private String aadhaarNumber;
+	@Column
+	private String zipCode;
+	@Column
+	private String maritialStatus;
+	@Column
+	private String gender;
+	@Column
+	private String qualification;
+	@Column
+	private String occupation;
+	@Column
+	private double salary=0;
+	@Column
+	private String tempString="";
 
 	public User(){
 		
@@ -119,5 +142,93 @@ public class User {
 			this.email,
 			this.designation,
 			this.role);
+	}
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAadhaarNumber() {
+		return aadhaarNumber;
+	}
+
+	public void setAadhaarNumber(String aadhaarNumber) {
+		this.aadhaarNumber = aadhaarNumber;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getMaritialStatus() {
+		return maritialStatus;
+	}
+
+	public void setMaritialStatus(String maritialStatus) {
+		this.maritialStatus = maritialStatus;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getQualification() {
+		return qualification;
+	}
+
+	public void setQualification(String qualification) {
+		this.qualification = qualification;
+	}
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	public String getCurrentAddress() {
+		return currentAddress;
+	}
+
+	public void setCurrentAddress(String currentAddress) {
+		this.currentAddress = currentAddress;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public String getTempString() {
+		return tempString;
+	}
+
+	public void setTempString(String tempString) {
+		this.tempString = tempString;
 	}
 }

@@ -12,7 +12,6 @@
     <title>Home | Swiss Bank</title>
 </head>
 <body>
-	
 	<header>
 		<img src="logo_title.png">
 	</header>
@@ -23,7 +22,6 @@
 			<input type="submit" value="logout">
 		</form>
 	</div>
-	
 	<div class="row">
 		<div class="actionTab col-lg-4">
 			<nav>
@@ -36,7 +34,26 @@
 			</nav>
 		</div>
 		<div class="menuTab col-lg-8">
-			<h1 style="color:white;">I will put all latest offers here. Later. </h1>
+			<div th:if="${countOfAccount!=0}">
+				<div class="AllAccountsSummary">
+					<div class="row individualAccountSummary" th:each="account : ${accountList}">
+						<div class="accountSummaryHeader">							
+							<div class="accountNumberInfo"><label class="accountFieldLabel">Account Number: </label><label class="accountFieldValue" th:text="${account.account_number}"></label></div>
+							<div class="userIdInfo"><label class="accountFieldLabel">User Email/Id: </label><label class="accountFieldValue" th:text="${account.userId}"></label></div>
+							
+							<div class="accountSummaryBody">
+								
+								<div><label class="accountFieldLabel">Balance: </label><label class="accountFieldValue" th:text="${account.balance}"></label></div>
+								<div><label class="accountFieldLabel">Category: </label><label class="accountFieldValue" th:text="${account.category}"></label></div>
+								<div><label class="accountFieldLabel">Created Date: </label><label class="accountFieldValue" th:text="${account.createdDate}"></label></div>
+								<div><label class="accountFieldLabel">Closure Date: </label><label class="accountFieldValue" th:text="${account.closureDate}"></label></div>
+								<div><label class="accountFieldLabel">Active: </label><label class="accountFieldValue" th:text="${account.isActive}"></label></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:if="${countOfAccount==0}"><h3 style="color:white;">No Account Yet? <a href="/createNewAccount">Create Account</a></h3></div>
 		</div>
 	</div>
 </body>

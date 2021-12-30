@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ApplicationController {
+	/*
+	 *  ""
+	 *  "/register"
+	 *  "/processRegistration"
+	 *  "/error"
+	 *  "/login"
+	 *  "/accountSummary"
+	 */
 
 	@Autowired
 	UserRepository userRepo;
@@ -39,7 +47,6 @@ public class ApplicationController {
 			return "error";
 		}
 	}
-	
 	@GetMapping("/error")
 	public String showError() {
 		return "error";

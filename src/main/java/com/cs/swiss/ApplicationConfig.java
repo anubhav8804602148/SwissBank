@@ -45,7 +45,12 @@ public class ApplicationConfig  extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 			.antMatchers("/error").permitAll()
 			.antMatchers("/register").permitAll()
+			.antMatchers("/login").permitAll()
+			.antMatchers("/transactions**").authenticated()
+			.antMatchers("/users**").authenticated()
 			.antMatchers("/").authenticated()
+			.antMatchers("/accounts**").authenticated()
+			.anyRequest().permitAll()
 			.and()
 			.formLogin()
 				.loginPage("/login")
@@ -57,3 +62,5 @@ public class ApplicationConfig  extends WebSecurityConfigurerAdapter{
 			.logout().logoutSuccessUrl("/login").permitAll();
 	}
 }
+
+

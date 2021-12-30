@@ -13,9 +13,10 @@
 </head>
 <body>
 	<div class="container flex-container">
-		<header>
-			<div><img class="bodyHeaderIcon" src="favicon.png"></div><div class="wordart slate"><span class="text bodyHeaderMessage">Swiss Bank</span></div>
-		</header>
+		
+	<header>
+		<img src="logo_title.png">
+	</header>
 	    <div class="row">
 	    	<div class="emptyArea col-lg-4">
 	    	</div>
@@ -23,8 +24,9 @@
 				<form th:action="@{/login}" method="POST" th:object="${user}" class="loginForm">
 					<div class="row"><h1>Sign In</h1></div>
 					<div class="row"><label class="col-lg-4 col-sm-4">Email</label><input class="col-lg-6 col-sm-6" type="email" placeholder="Enter email" th:field="*{email}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">Password</label><input class="col-lg-6 col-sm-6" type="password" placeholder="Choose password" th:field="*{password}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4"></label><input class="col-lg-4 col-sm-4" type="submit" value="Register"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Password</label><input class="col-lg-6 col-sm-6" type="password" placeholder="Enter password" th:field="*{password}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4"></label><input class="col-lg-4 col-sm-4" type="submit" value="Sign In"></div>
+					<div><label>Not Registered Yet?</label><a href="/register">Click here</a></div>
 				</form>
 	    	</div>
 	    </div>

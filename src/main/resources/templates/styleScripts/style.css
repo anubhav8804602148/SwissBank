@@ -105,6 +105,9 @@ header > img{
 	height:200px;
 	border-radius:30%;
 }
+.errorMessage > label{
+	font-size:20px;
+}
 
 /* 
 .bodyHeaderIcon{

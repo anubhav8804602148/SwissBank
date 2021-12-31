@@ -121,8 +121,10 @@ public class AccountController {
 				.filter(acc -> acc.getCategory().equals(account.getCategory()))
 				.collect(Collectors.toList());
 		if(existingAccounts.size()>0) {
+			model.addAttribute("errorMessage","You already have an account of the provided type");
 			return "error";
 		}
+		
 		userRepo.save(user);
 		accountRepo.save(account);
 		return "AccountSummary";

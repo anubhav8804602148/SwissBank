@@ -141,6 +141,7 @@ public class TransactionController {
 			toAccount.setBalance(toAccount.getBalance()+transaction.getDebitedAmount());
 			fromAccount.setBalance(fromAccount.getBalance()-transaction.getDebitedAmount());
 			transactionRepo.save(transaction);
+			transactionRepo.save(toTransaction);
 			accountRepo.save(toAccount);
 			accountRepo.save(fromAccount);
 			return "TransactionDetails";

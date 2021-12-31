@@ -27,11 +27,41 @@
 	    	<div class="Form col-lg-4 col-sm-4">
 				<form th:action="@{/processRegistration}" method="POST" th:object="${user}" class="registerForm">
 					<div class="row"><h1>Register</h1></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">First Name</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter first name" th:field="*{fname}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">Last Name</label><input class="col-lg-6 col-sm-6" type="text" placeholder="Enter last name" th:field="*{lname}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">Email</label><input class="col-lg-6 col-sm-6" type="email" placeholder="Enter email" th:field="*{email}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">Password</label><input class="col-lg-6 col-sm-6" type="password" placeholder="Choose password" th:field="*{password}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4"></label><input class="col-lg-4 col-sm-4" type="submit" value="Register"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">First Name</label>
+						<input 
+							pattern="[A-Za-z]{3,20}" 
+							class="col-lg-6 col-sm-6" 
+							type="text" 
+							placeholder="Enter first name" 
+							title="First name should be atleast 3 characters and should only contain alphabets"
+							th:field="*{fname}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Last Name</label>
+						<input 
+							pattern="[A-Za-z ]{3,20}" 
+							class="col-lg-6 col-sm-6" 
+							type="text" 
+							title="Last name should be atleast 3 characters and should only contain alphabets or spaces. E.g. John F. Kennedy : last name is F Kennedy"
+							placeholder="Enter last name" 
+							th:field="*{lname}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Email</label>
+						<input 
+							class="col-lg-6 col-sm-6" 
+							type="email" 
+							placeholder="Enter email" 
+							th:field="*{email}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Password</label>
+						<input 
+							class="col-lg-6 col-sm-6" 
+							type="password" 
+							pattern="^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+							title="Password should be atleast 8 characters, must contain one Uppercase, one lowercase character and one special character from @#$%^&+="
+							placeholder="Choose password" 
+							th:field="*{password}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4"></label>
+						<input 
+							class="col-lg-4 col-sm-4" 
+							type="submit" 
+							value="Register"></div>
 					<div><label>Already Registered?</label><a href="/login">Click here</a></div>
 				</form>
 	    	</div>

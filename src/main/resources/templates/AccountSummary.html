@@ -43,7 +43,9 @@
 							
 							<div class="accountSummaryBody">
 								
-								<div><label class="accountFieldLabel">Balance: </label><label class="accountFieldValue" th:text="${account.balance}"></label></div>
+								<div><label class="accountFieldLabel">Balance: </label><label class="accountFieldValue" th:text="${account.balance}"></label>
+									<form th:action="@{/addBalance}"><input type="submit" value="Add Balance"></form>
+								</div>
 								<div><label class="accountFieldLabel">Category: </label><label class="accountFieldValue" th:text="${account.category}"></label></div>
 								<div><label class="accountFieldLabel">Created Date: </label><label class="accountFieldValue" th:text="${account.createdDate}"></label></div>
 								<div><label class="accountFieldLabel">Closure Date: </label><label class="accountFieldValue" th:text="${account.closureDate}"></label></div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" th:href="favicon.png" />
+		<meta charset="ISO-8859-1">
+		<script src="styleScripts/jquery.js" type="text/javascript"></script>
+		<script src="styleScripts/angular.js" type="text/javascript"></script>
+		<script src="styleScripts/script.js" type="text/javascript"></script>
+		<script src="styleScripts/bootstrap.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="styleScripts/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="styleScripts/style.css"/>
+    <title>Home | Swiss Bank</title>
+</head>
+<body>
+	
+	<header>
+		<img src="logo_title.png">
+	</header>
+	<div class="loggedInUserData">
+		[[${#request.userPrincipal.principal.fullName}]]<br>
+		[[${#request.userPrincipal.principal.additionalDetails}]]<br>
+		<form method="POST" class="logoutForm" th:action="@{/logout}">
+			<input type="submit" value="logout">
+		</form>
+	</div>
+	<div class="row">
+		<div class="actionTab col-lg-4">
+			<nav>
+				<div class="acionTab btn-group-vertical">
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/'|">Home</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/accountSummary'|">Account Summary</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transactionsSummary'|">Transactions</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transferFunds'|">Transfer Fund</button>
+				</div>
+			</nav>
+		</div>
+		<div class="menuTab col-lg-8">
+			<div th:if="${countOfTransaction!=0}">
+				<div class="AllTransactionDetails">
+					<div>
+						<label>Filter Criteria</label><input type="search" placeholder="Search">
+						<div th:each="transaction : ${transactions}">
+							<div class="row"><label class="col-lg-4">Id</label><label class="col-lg-4" th:text="${transaction.id}" th:value="${transactionId}"></label></div>
+							<div class="row"><label class="col-lg-4">Account</label><label class="col-lg-4" th:text="${transaction.accountNumber}"></label></div>
+							<div class="row"><label class="col-lg-4">Date of transaction</label><label class="col-lg-4" th:text="${transaction.dateOfTransaction}"></label></div>
+							<div class="row"><label class="col-lg-4">Amount</label><label class="col-lg-4" th:text="${transaction.creditedAmount}"></label></div>
+							<form th:action="@{/processApproveTransaction(transactionId=${transaction.id})}" method="POST"><input type="submit" value="approve"></form><form th:action="@{/processRejectTransaction(transactionId=${transaction.id})}" method="POST"><input type="submit" value="  reject  "></form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:if="${countOfTransaction==0}">
+			<h3 style="color:white;">
+				No action required as of now. Have a nice day!
+			</h3>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

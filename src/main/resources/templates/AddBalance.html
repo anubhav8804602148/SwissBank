@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" th:href="favicon.png" />
+		<meta charset="ISO-8859-1">
+		<script src="styleScripts/jquery.js" type="text/javascript"></script>
+		<script src="styleScripts/angular.js" type="text/javascript"></script>
+		<script src="styleScripts/script.js" type="text/javascript"></script>
+		<script src="styleScripts/bootstrap.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="styleScripts/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="styleScripts/style.css"/>
+    <title>Home | Swiss Bank</title>
+</head>
+<body>
+	
+	<header>
+		<img src="logo_title.png">
+	</header>
+	<div class="loggedInUserData">
+		[[${#request.userPrincipal.principal.fullName}]]<br>
+		[[${#request.userPrincipal.principal.additionalDetails}]]<br>
+		<form method="POST" class="logoutForm" th:action="@{/logout}">
+			<input type="submit" value="logout">
+		</form>
+	</div>
+	<div class="row">
+		<div class="actionTab col-lg-4">
+			<nav>
+				<div class="acionTab btn-group-vertical">
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/'|">Home</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/accountSummary'|">Account Summary</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transactionsSummary'|">Transactions</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transferFunds'|">Transfer Fund</button>
+				</div>
+			</nav>
+		</div>
+		<div class="menuTab col-lg-8">
+			<form method="POST" class="transactMoney" th:action="@{/processAddBalance}" th:object="${transaction}">
+					<div class="row"><h1>Fund Transfer</h1></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">To Account</label>
+					<select class="col-lg-6 col-sm-6" th:field="*{accountNumber}">
+						<option th:each="account : ${accounts}" th:value="${account}" th:text="${account}"></option>
+					</select></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">From Account Number</label>
+						<input 
+							class="col-lg-6 col-sm-6" 
+							type="text" 
+							pattern="[0-9]{8,20}"
+							title="Account number can only have numbers. Please mail us if its different for you"
+							placeholder="Enter  Account Number" 
+							th:field="*{accountNumber}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">IFSC Code</label>
+						<input 
+							class="col-lg-6 col-sm-6" 
+							type="text" 
+							placeholder="Enter IFSC Code" 
+							pattern="[A-Z]{4}[0-9]{7}"
+							title="IFSC code is of form AAAA0000000. Please mail us if its different for you"
+							th:field="*{IFSCCode}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4">Amount</label>
+						<input 
+							class="col-lg-6 col-sm-6" 
+							type="number" 
+							min="1"
+							title="You want to transfer less than 1? Really?"
+							placeholder="Enter Amount" 
+							th:field="*{creditedAmount}"></div>
+					<div class="row"><label class="col-lg-4 col-sm-4"></label>
+						<input 
+							class="col-lg-4 col-sm-4" 
+							type="submit" 
+							value="Transfer"></div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

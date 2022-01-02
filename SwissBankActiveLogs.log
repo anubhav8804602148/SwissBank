@@ -1,0 +1,435 @@
+2022-01-02 15:34:46.997  INFO 31984 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Starting SwissBankApplication using Java 16.0.2 on Anubhav with PID 31984 (D:\my_projects\SwissBank\target\classes started by Anubhav in D:\my_projects\SwissBank)
+2022-01-02 15:34:46.998  INFO 31984 --- [restartedMain] com.cs.swiss.SwissBankApplication        : No active profile set, falling back to default profiles: default
+2022-01-02 15:34:47.134  INFO 31984 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-02 15:34:47.153  INFO 31984 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 4 JPA repository interfaces.
+2022-01-02 15:34:47.230  INFO 31984 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (https)
+2022-01-02 15:34:47.231  INFO 31984 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-02 15:34:47.232  INFO 31984 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-02 15:34:47.249  INFO 31984 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-02 15:34:47.249  INFO 31984 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 249 ms
+2022-01-02 15:34:47.258 DEBUG 31984 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2022-01-02 15:34:47.276  INFO 31984 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-02 15:34:47.279  INFO 31984 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-01-02 15:34:47.300  INFO 31984 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-01-02 15:34:47.300  INFO 31984 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-01-02 15:34:47.369  INFO 31984 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-02 15:34:47.370  INFO 31984 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:34:47.491  WARN 31984 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-02 15:34:47.540  INFO 31984 --- [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter      : Validated configuration attributes
+2022-01-02 15:34:47.542  INFO 31984 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.access.channel.ChannelProcessingFilter@61db2474, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d207842, org.springframework.security.web.context.SecurityContextPersistenceFilter@6f17556a, org.springframework.security.web.header.HeaderWriterFilter@1babb050, org.springframework.security.web.csrf.CsrfFilter@3dab8b8a, org.springframework.security.web.authentication.logout.LogoutFilter@47b89d60, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@65d33074, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@517dd133, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1712c27c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5abd2e2, org.springframework.security.web.session.SessionManagementFilter@e8168eb, org.springframework.security.web.access.ExceptionTranslationFilter@613bfdf6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@24c15de2]
+2022-01-02 15:34:47.570 DEBUG 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-01-02 15:34:47.574 TRACE 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.AccountController:
+	{GET [/accounts/{id}]}: getAccountById(int)
+	{PUT [/accounts/{id}]}: putAccountById(int,String,String)
+	{ [/accounts]}: getAccounts()
+	{GET [/accountSummary]}: showAccountSummary(Model,String,String)
+	{DELETE [/accounts/{id}]}: deleteAccountById(long)
+	{GET [/createNewAccount]}: showNewAccountForm(Model)
+	{POST [/processNewAccount]}: processNewAccount(User,Model)
+	{POST [/accounts/{id}]}: postAccountById(int,double,String,String)
+2022-01-02 15:34:47.575 TRACE 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.ApplicationController:
+	{POST [/processRegistration]}: processRegistrationForm(User,Model)
+	{GET [/register]}: showRegistrationPage(Model)
+	{GET []}: welcomeUser()
+	{GET [/error]}: showError()
+	{GET [/login]}: showLoginPage(Model,String,String)
+2022-01-02 15:34:47.576 TRACE 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.TransactionController:
+	{GET [/transactionsSummary]}: showTransactionDetails(Model)
+	{GET [/transferFunds]}: showFundTransferPage(Model)
+	{POST [/transactions/{id}]}: postTransactionByid(long,long,boolean,String,boolean,double,double,String,String,String)
+	{GET [/transactions/{id}]}: getTransactionById(long)
+	{GET [/transactions]}: getAllTransactions()
+	{GET [/approve]}: showApprovalPage(Model)
+	{POST [/processAddBalance]}: processAddBalance(Transaction)
+	{POST [/processTransaction]}: processTransaction(Transaction,Model)
+	{GET [/addBalance]}: addBalance(Model)
+	{POST [/processRejectTransaction]}: rejectTransaction(int,Model)
+	{POST [/processApproveTransaction]}: approveTransaction(int,Model)
+2022-01-02 15:34:47.577 TRACE 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.UserController:
+	{GET [/users]}: getAllUsers()
+	{DELETE [/users/{id}]}: deleteUserById(int)
+	{POST [/users/{id}]}: postUserById(int,String,String,String,String,String,String)
+	{PUT [/users/{id}]}: putUserById(int,String,String)
+	{GET [/users/{id}]}: getUserById(int)
+2022-01-02 15:34:47.578 TRACE 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2022-01-02 15:34:47.580 DEBUG 31984 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 31 mappings in 'requestMappingHandlerMapping'
+2022-01-02 15:34:47.587 DEBUG 31984 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2022-01-02 15:34:47.589 TRACE 31984 --- [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2022-01-02 15:34:47.882 TRACE 31984 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2022-01-02 15:34:47.882 TRACE 31984 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]
+2022-01-02 15:34:47.882 DEBUG 31984 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-01-02 15:34:47.890 DEBUG 31984 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-01-02 15:34:47.945  INFO 31984 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-02 15:34:48.106  INFO 31984 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (https) with context path ''
+2022-01-02 15:34:48.112  INFO 31984 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Started SwissBankApplication in 1.138 seconds (JVM running for 169.174)
+2022-01-02 15:34:48.114  INFO 31984 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-01-02 15:34:53.703  INFO 31984 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-01-02 15:34:53.727  INFO 31984 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:34:53.728  INFO 31984 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-01-02 15:34:53.733  INFO 31984 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-01-02 15:34:57.062  INFO 27396 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Starting SwissBankApplication using Java 16.0.2 on Anubhav with PID 27396 (D:\my_projects\SwissBank\target\classes started by Anubhav in D:\my_projects\SwissBank)
+2022-01-02 15:34:57.063  INFO 27396 --- [restartedMain] com.cs.swiss.SwissBankApplication        : No active profile set, falling back to default profiles: default
+2022-01-02 15:34:57.110  INFO 27396 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-02 15:34:57.110  INFO 27396 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-02 15:34:57.625  INFO 27396 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-02 15:34:57.688  INFO 27396 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2022-01-02 15:34:58.177  INFO 27396 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (https)
+2022-01-02 15:34:58.185  INFO 27396 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-02 15:34:58.186  INFO 27396 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-02 15:34:58.316  INFO 27396 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-02 15:34:58.316  INFO 27396 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1205 ms
+2022-01-02 15:34:58.356 DEBUG 27396 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2022-01-02 15:34:58.476  INFO 27396 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-02 15:34:58.521  INFO 27396 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-02 15:34:58.634  INFO 27396 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-02 15:34:58.710  INFO 27396 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-02 15:34:59.066  INFO 27396 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-02 15:34:59.102  INFO 27396 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-01-02 15:35:00.032  INFO 27396 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-02 15:35:00.045  INFO 27396 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:35:00.573  WARN 27396 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-02 15:35:00.748  INFO 27396 --- [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter      : Validated configuration attributes
+2022-01-02 15:35:00.762  INFO 27396 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.access.channel.ChannelProcessingFilter@4dbfa8f4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@35bd3c61, org.springframework.security.web.context.SecurityContextPersistenceFilter@13e2504a, org.springframework.security.web.header.HeaderWriterFilter@1f67853b, org.springframework.security.web.csrf.CsrfFilter@3398f90a, org.springframework.security.web.authentication.logout.LogoutFilter@4b16de4d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@144d5a8b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@94ada30, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e8d13ec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@269951a2, org.springframework.security.web.session.SessionManagementFilter@6a90e7aa, org.springframework.security.web.access.ExceptionTranslationFilter@777a83d8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6e87b47d]
+2022-01-02 15:35:00.872 DEBUG 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-01-02 15:35:00.932 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.AccountController:
+	{ [/accounts]}: getAccounts()
+	{DELETE [/accounts/{id}]}: deleteAccountById(long)
+	{POST [/accounts/{id}]}: postAccountById(int,double,String,String)
+	{GET [/accounts/{id}]}: getAccountById(int)
+	{PUT [/accounts/{id}]}: putAccountById(int,String,String)
+	{GET [/accountSummary]}: showAccountSummary(Model,String,String)
+	{POST [/processNewAccount]}: processNewAccount(User,Model)
+	{GET [/createNewAccount]}: showNewAccountForm(Model)
+2022-01-02 15:35:00.933 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.ApplicationController:
+	{GET []}: welcomeUser()
+	{GET [/login]}: showLoginPage(Model,String,String)
+	{GET [/error]}: showError()
+	{GET [/register]}: showRegistrationPage(Model)
+	{POST [/processRegistration]}: processRegistrationForm(User,Model)
+2022-01-02 15:35:00.936 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.TransactionController:
+	{GET [/transactions]}: getAllTransactions()
+	{GET [/transactions/{id}]}: getTransactionById(long)
+	{POST [/processAddBalance]}: processAddBalance(Transaction)
+	{POST [/processTransaction]}: processTransaction(Transaction,Model)
+	{GET [/addBalance]}: addBalance(Model)
+	{GET [/approve]}: showApprovalPage(Model)
+	{POST [/processRejectTransaction]}: rejectTransaction(int,Model)
+	{POST [/processApproveTransaction]}: approveTransaction(int,Model)
+	{GET [/transferFunds]}: showFundTransferPage(Model)
+	{POST [/transactions/{id}]}: postTransactionByid(long,long,boolean,String,boolean,double,double,String,String,String)
+	{GET [/transactionsSummary]}: showTransactionDetails(Model)
+2022-01-02 15:35:00.937 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.UserController:
+	{GET [/users]}: getAllUsers()
+	{PUT [/users/{id}]}: putUserById(int,String,String)
+	{GET [/users/{id}]}: getUserById(int)
+	{POST [/users/{id}]}: postUserById(int,String,String,String,String,String,String)
+	{DELETE [/users/{id}]}: deleteUserById(int)
+2022-01-02 15:35:00.939 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2022-01-02 15:35:00.942 DEBUG 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 31 mappings in 'requestMappingHandlerMapping'
+2022-01-02 15:35:00.955 DEBUG 27396 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2022-01-02 15:35:00.959 TRACE 27396 --- [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2022-01-02 15:35:01.300 TRACE 27396 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2022-01-02 15:35:01.300 TRACE 27396 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]
+2022-01-02 15:35:01.300 DEBUG 27396 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-01-02 15:35:01.316 DEBUG 27396 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-01-02 15:35:01.445  INFO 27396 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-02 15:35:01.721  INFO 27396 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (https) with context path ''
+2022-01-02 15:35:01.732  INFO 27396 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Started SwissBankApplication in 4.987 seconds (JVM running for 5.7)
+2022-01-02 15:36:53.379  INFO 27396 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:36:53.383  INFO 27396 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-01-02 15:36:53.391  INFO 27396 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-01-02 15:36:53.461  INFO 27396 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Starting SwissBankApplication using Java 16.0.2 on Anubhav with PID 27396 (D:\my_projects\SwissBank\target\classes started by Anubhav in D:\my_projects\SwissBank)
+2022-01-02 15:36:53.462  INFO 27396 --- [restartedMain] com.cs.swiss.SwissBankApplication        : No active profile set, falling back to default profiles: default
+2022-01-02 15:36:53.629  INFO 27396 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-02 15:36:53.643  INFO 27396 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 4 JPA repository interfaces.
+2022-01-02 15:36:53.712  INFO 27396 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (https)
+2022-01-02 15:36:53.713  INFO 27396 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-02 15:36:53.713  INFO 27396 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-02 15:36:53.735  INFO 27396 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-02 15:36:53.735  INFO 27396 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 271 ms
+2022-01-02 15:36:53.743 DEBUG 27396 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2022-01-02 15:36:53.765  INFO 27396 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-02 15:36:53.768  INFO 27396 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-01-02 15:36:53.789  INFO 27396 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-01-02 15:36:53.790  INFO 27396 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-01-02 15:36:53.849  INFO 27396 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-02 15:36:53.850  INFO 27396 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:36:53.969  WARN 27396 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-02 15:36:54.012  INFO 27396 --- [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter      : Validated configuration attributes
+2022-01-02 15:36:54.014  INFO 27396 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.access.channel.ChannelProcessingFilter@37d08754, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73cd8db2, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b7963e2, org.springframework.security.web.header.HeaderWriterFilter@20791d3b, org.springframework.security.web.csrf.CsrfFilter@4bbca857, org.springframework.security.web.authentication.logout.LogoutFilter@1d26832d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@10707880, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c804d74, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3478031a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@97b821d, org.springframework.security.web.session.SessionManagementFilter@55298700, org.springframework.security.web.access.ExceptionTranslationFilter@15265f16, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@696a3a08]
+2022-01-02 15:36:54.041 DEBUG 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-01-02 15:36:54.045 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.AccountController:
+	{ [/accounts]}: getAccounts()
+	{DELETE [/accounts/{id}]}: deleteAccountById(long)
+	{POST [/accounts/{id}]}: postAccountById(int,double,String,String)
+	{GET [/accounts/{id}]}: getAccountById(int)
+	{PUT [/accounts/{id}]}: putAccountById(int,String,String)
+	{GET [/accountSummary]}: showAccountSummary(Model,String,String)
+	{POST [/processNewAccount]}: processNewAccount(User,Model)
+	{GET [/createNewAccount]}: showNewAccountForm(Model)
+2022-01-02 15:36:54.046 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.ApplicationController:
+	{GET []}: welcomeUser()
+	{GET [/login]}: showLoginPage(Model,String,String)
+	{GET [/error]}: showError()
+	{GET [/register]}: showRegistrationPage(Model)
+	{POST [/processRegistration]}: processRegistrationForm(User,Model)
+2022-01-02 15:36:54.047 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.TransactionController:
+	{GET [/transactions]}: getAllTransactions()
+	{GET [/transactions/{id}]}: getTransactionById(long)
+	{POST [/processAddBalance]}: processAddBalance(Transaction)
+	{POST [/processTransaction]}: processTransaction(Transaction,Model)
+	{GET [/addBalance]}: addBalance(Model)
+	{GET [/approve]}: showApprovalPage(Model)
+	{POST [/processRejectTransaction]}: rejectTransaction(int,Model)
+	{POST [/processApproveTransaction]}: approveTransaction(int,Model)
+	{GET [/transferFunds]}: showFundTransferPage(Model)
+	{POST [/transactions/{id}]}: postTransactionByid(long,long,boolean,String,boolean,double,double,String,String,String)
+	{GET [/transactionsSummary]}: showTransactionDetails(Model)
+2022-01-02 15:36:54.048 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.UserController:
+	{GET [/users]}: getAllUsers()
+	{PUT [/users/{id}]}: putUserById(int,String,String)
+	{GET [/users/{id}]}: getUserById(int)
+	{POST [/users/{id}]}: postUserById(int,String,String,String,String,String,String)
+	{DELETE [/users/{id}]}: deleteUserById(int)
+2022-01-02 15:36:54.050 TRACE 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2022-01-02 15:36:54.052 DEBUG 27396 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 31 mappings in 'requestMappingHandlerMapping'
+2022-01-02 15:36:54.060 DEBUG 27396 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2022-01-02 15:36:54.061 TRACE 27396 --- [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2022-01-02 15:36:54.280 TRACE 27396 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2022-01-02 15:36:54.280 TRACE 27396 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]
+2022-01-02 15:36:54.281 DEBUG 27396 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-01-02 15:36:54.289 DEBUG 27396 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-01-02 15:36:54.341  INFO 27396 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-02 15:36:54.531  INFO 27396 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (https) with context path ''
+2022-01-02 15:36:54.534  INFO 27396 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Started SwissBankApplication in 1.098 seconds (JVM running for 118.503)
+2022-01-02 15:36:54.536  INFO 27396 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-01-02 15:36:54.635  INFO 27396 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-01-02 15:36:54.674  INFO 27396 --- [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:36:54.675  INFO 27396 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-01-02 15:36:54.683  INFO 27396 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-01-02 15:36:57.880  INFO 29764 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Starting SwissBankApplication using Java 16.0.2 on Anubhav with PID 29764 (D:\my_projects\SwissBank\target\classes started by Anubhav in D:\my_projects\SwissBank)
+2022-01-02 15:36:57.881  INFO 29764 --- [restartedMain] com.cs.swiss.SwissBankApplication        : No active profile set, falling back to default profiles: default
+2022-01-02 15:36:57.925  INFO 29764 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-02 15:36:57.925  INFO 29764 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-02 15:36:58.456  INFO 29764 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-02 15:36:58.518  INFO 29764 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2022-01-02 15:36:59.043  INFO 29764 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (https)
+2022-01-02 15:36:59.051  INFO 29764 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-02 15:36:59.052  INFO 29764 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-02 15:36:59.158  INFO 29764 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-02 15:36:59.159  INFO 29764 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1233 ms
+2022-01-02 15:36:59.203 DEBUG 29764 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2022-01-02 15:36:59.327  INFO 29764 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-02 15:36:59.363  INFO 29764 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-02 15:36:59.511  INFO 29764 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-02 15:36:59.597  INFO 29764 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-02 15:37:00.031  INFO 29764 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-02 15:37:00.068  INFO 29764 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-01-02 15:37:00.952  INFO 29764 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-02 15:37:00.969  INFO 29764 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:37:01.405  WARN 29764 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-02 15:37:01.580  INFO 29764 --- [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter      : Validated configuration attributes
+2022-01-02 15:37:01.592  INFO 29764 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.access.channel.ChannelProcessingFilter@6b89c670, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@25f98c8a, org.springframework.security.web.context.SecurityContextPersistenceFilter@67ecd005, org.springframework.security.web.header.HeaderWriterFilter@5beb121e, org.springframework.security.web.csrf.CsrfFilter@17abd53c, org.springframework.security.web.authentication.logout.LogoutFilter@251254a4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4c683b79, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3cfaec87, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ef04e89, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11914fa4, org.springframework.security.web.session.SessionManagementFilter@369d4f1, org.springframework.security.web.access.ExceptionTranslationFilter@b1874, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@14ae7449]
+2022-01-02 15:37:01.689 DEBUG 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-01-02 15:37:01.743 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.AccountController:
+	{ [/accounts]}: getAccounts()
+	{POST [/accounts/{id}]}: postAccountById(int,double,String,String)
+	{PUT [/accounts/{id}]}: putAccountById(int,String,String)
+	{DELETE [/accounts/{id}]}: deleteAccountById(long)
+	{GET [/accountSummary]}: showAccountSummary(Model,String,String)
+	{GET [/accounts/{id}]}: getAccountById(int)
+	{POST [/processNewAccount]}: processNewAccount(User,Model)
+	{GET [/createNewAccount]}: showNewAccountForm(Model)
+2022-01-02 15:37:01.745 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.ApplicationController:
+	{GET [/register]}: showRegistrationPage(Model)
+	{POST [/processRegistration]}: processRegistrationForm(User,Model)
+	{GET []}: welcomeUser()
+	{GET [/login]}: showLoginPage(Model,String,String)
+	{GET [/error]}: showError()
+2022-01-02 15:37:01.748 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.TransactionController:
+	{POST [/transactions/{id}]}: postTransactionByid(long,long,boolean,String,boolean,double,double,String,String,String)
+	{GET [/transferFunds]}: showFundTransferPage(Model)
+	{GET [/transactionsSummary]}: showTransactionDetails(Model)
+	{GET [/transactions/{id}]}: getTransactionById(long)
+	{GET [/transactions]}: getAllTransactions()
+	{POST [/processTransaction]}: processTransaction(Transaction,Model)
+	{GET [/addBalance]}: addBalance(Model)
+	{POST [/processAddBalance]}: processAddBalance(Transaction)
+	{GET [/approve]}: showApprovalPage(Model)
+	{POST [/processApproveTransaction]}: approveTransaction(int,Model)
+	{POST [/processRejectTransaction]}: rejectTransaction(int,Model)
+2022-01-02 15:37:01.749 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.UserController:
+	{PUT [/users/{id}]}: putUserById(int,String,String)
+	{GET [/users]}: getAllUsers()
+	{POST [/users/{id}]}: postUserById(int,String,String,String,String,String,String)
+	{GET [/users/{id}]}: getUserById(int)
+	{DELETE [/users/{id}]}: deleteUserById(int)
+2022-01-02 15:37:01.751 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2022-01-02 15:37:01.754 DEBUG 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 31 mappings in 'requestMappingHandlerMapping'
+2022-01-02 15:37:01.768 DEBUG 29764 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2022-01-02 15:37:01.771 TRACE 29764 --- [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2022-01-02 15:37:02.120 TRACE 29764 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2022-01-02 15:37:02.121 TRACE 29764 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]
+2022-01-02 15:37:02.121 DEBUG 29764 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-01-02 15:37:02.132 DEBUG 29764 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-01-02 15:37:02.268  INFO 29764 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-02 15:37:02.564  INFO 29764 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (https) with context path ''
+2022-01-02 15:37:02.577  INFO 29764 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Started SwissBankApplication in 4.977 seconds (JVM running for 5.678)
+2022-01-02 15:38:57.382  INFO 29764 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:38:57.386  INFO 29764 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-01-02 15:38:57.396  INFO 29764 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-01-02 15:38:57.473  INFO 29764 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Starting SwissBankApplication using Java 16.0.2 on Anubhav with PID 29764 (D:\my_projects\SwissBank\target\classes started by Anubhav in D:\my_projects\SwissBank)
+2022-01-02 15:38:57.473  INFO 29764 --- [restartedMain] com.cs.swiss.SwissBankApplication        : No active profile set, falling back to default profiles: default
+2022-01-02 15:38:57.604  INFO 29764 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-02 15:38:57.617  INFO 29764 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 4 JPA repository interfaces.
+2022-01-02 15:38:57.707  INFO 29764 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (https)
+2022-01-02 15:38:57.708  INFO 29764 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-02 15:38:57.708  INFO 29764 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-02 15:38:57.731  INFO 29764 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-02 15:38:57.732  INFO 29764 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 257 ms
+2022-01-02 15:38:57.743 DEBUG 29764 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2022-01-02 15:38:57.770  INFO 29764 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-02 15:38:57.773  INFO 29764 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-01-02 15:38:57.794  INFO 29764 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-01-02 15:38:57.795  INFO 29764 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-01-02 15:38:57.865  INFO 29764 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-02 15:38:57.865  INFO 29764 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:38:57.993  WARN 29764 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-02 15:38:58.043  INFO 29764 --- [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter      : Validated configuration attributes
+2022-01-02 15:38:58.046  INFO 29764 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.access.channel.ChannelProcessingFilter@64a659a7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22af7982, org.springframework.security.web.context.SecurityContextPersistenceFilter@242b862b, org.springframework.security.web.header.HeaderWriterFilter@2de4a3c3, org.springframework.security.web.csrf.CsrfFilter@143df791, org.springframework.security.web.authentication.logout.LogoutFilter@10323222, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2ab20dc7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@343ee81f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c4cafe0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2cace434, org.springframework.security.web.session.SessionManagementFilter@5fd1633f, org.springframework.security.web.access.ExceptionTranslationFilter@6cff8f4e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12850d24]
+2022-01-02 15:38:58.079 DEBUG 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-01-02 15:38:58.085 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.AccountController:
+	{ [/accounts]}: getAccounts()
+	{POST [/accounts/{id}]}: postAccountById(int,double,String,String)
+	{PUT [/accounts/{id}]}: putAccountById(int,String,String)
+	{DELETE [/accounts/{id}]}: deleteAccountById(long)
+	{GET [/accountSummary]}: showAccountSummary(Model,String,String)
+	{GET [/accounts/{id}]}: getAccountById(int)
+	{POST [/processNewAccount]}: processNewAccount(User,Model)
+	{GET [/createNewAccount]}: showNewAccountForm(Model)
+2022-01-02 15:38:58.086 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.ApplicationController:
+	{GET [/register]}: showRegistrationPage(Model)
+	{POST [/processRegistration]}: processRegistrationForm(User,Model)
+	{GET []}: welcomeUser()
+	{GET [/login]}: showLoginPage(Model,String,String)
+	{GET [/error]}: showError()
+2022-01-02 15:38:58.087 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.TransactionController:
+	{POST [/transactions/{id}]}: postTransactionByid(long,long,boolean,String,boolean,double,double,String,String,String)
+	{GET [/transferFunds]}: showFundTransferPage(Model)
+	{GET [/transactionsSummary]}: showTransactionDetails(Model)
+	{GET [/transactions/{id}]}: getTransactionById(long)
+	{GET [/transactions]}: getAllTransactions()
+	{POST [/processTransaction]}: processTransaction(Transaction,Model)
+	{GET [/addBalance]}: addBalance(Model)
+	{POST [/processAddBalance]}: processAddBalance(Transaction)
+	{GET [/approve]}: showApprovalPage(Model)
+	{POST [/processApproveTransaction]}: approveTransaction(int,Model)
+	{POST [/processRejectTransaction]}: rejectTransaction(int,Model)
+2022-01-02 15:38:58.088 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.c.s.UserController:
+	{PUT [/users/{id}]}: putUserById(int,String,String)
+	{GET [/users]}: getAllUsers()
+	{POST [/users/{id}]}: postUserById(int,String,String,String,String,String,String)
+	{GET [/users/{id}]}: getUserById(int)
+	{DELETE [/users/{id}]}: deleteUserById(int)
+2022-01-02 15:38:58.089 TRACE 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2022-01-02 15:38:58.090 DEBUG 29764 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 31 mappings in 'requestMappingHandlerMapping'
+2022-01-02 15:38:58.099 DEBUG 29764 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2022-01-02 15:38:58.101 TRACE 29764 --- [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2022-01-02 15:38:58.395 TRACE 29764 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2022-01-02 15:38:58.396 TRACE 29764 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]
+2022-01-02 15:38:58.396 DEBUG 29764 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-01-02 15:38:58.404 DEBUG 29764 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-01-02 15:38:58.461  INFO 29764 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-02 15:38:58.620  INFO 29764 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (https) with context path ''
+2022-01-02 15:38:58.624  INFO 29764 --- [restartedMain] com.cs.swiss.SwissBankApplication        : Started SwissBankApplication in 1.177 seconds (JVM running for 121.726)
+2022-01-02 15:38:58.626  INFO 29764 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-01-02 15:39:30.008  INFO 29764 --- [https-jsse-nio-443-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.008  INFO 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-02 15:39:30.008 TRACE 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.multipart.support.StandardServletMultipartResolver@369ed5a3
+2022-01-02 15:39:30.008 TRACE 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@5135b9fe
+2022-01-02 15:39:30.009 TRACE 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.theme.FixedThemeResolver@52f5c299
+2022-01-02 15:39:30.010 TRACE 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Detected DefaultRequestToViewNameTranslator
+2022-01-02 15:39:30.011 TRACE 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Detected SessionFlashMapManager
+2022-01-02 15:39:30.011 DEBUG 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-01-02 15:39:30.011  INFO 29764 --- [https-jsse-nio-443-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-01-02 15:39:30.083 TRACE 29764 --- [https-jsse-nio-443-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.090 TRACE 29764 --- [https-jsse-nio-443-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.cs.swiss.ApplicationController#showLoginPage(Model, String, String)
+2022-01-02 15:39:30.113 TRACE 29764 --- [https-jsse-nio-443-exec-2] o.s.web.method.HandlerMethod             : Arguments: [{}, null, null]
+2022-01-02 15:39:30.120 TRACE 29764 --- [https-jsse-nio-443-exec-2] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2022-01-02 15:39:30.125 DEBUG 29764 --- [https-jsse-nio-443-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2022-01-02 15:39:30.125 TRACE 29764 --- [https-jsse-nio-443-exec-2] o.s.web.servlet.DispatcherServlet        : Rendering view [org.thymeleaf.spring5.view.ThymeleafView@704661af] 
+2022-01-02 15:39:30.317 TRACE 29764 --- [https-jsse-nio-443-exec-2] o.s.w.s.resource.ResourceUrlProvider     : No match for "/login"
+2022-01-02 15:39:30.342 DEBUG 29764 --- [https-jsse-nio-443-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.389 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/styleScripts/jquery.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.393 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.395 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.434 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.435 DEBUG 29764 --- [https-jsse-nio-443-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.436 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/styleScripts/style.css", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.437 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.438 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.440 TRACE 29764 --- [https-jsse-nio-443-exec-6] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.440 DEBUG 29764 --- [https-jsse-nio-443-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.442 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/styleScripts/bootstrap.css", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.443 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.443 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.463 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.463 DEBUG 29764 --- [https-jsse-nio-443-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.465 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/styleScripts/angular.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.465 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.466 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.581 TRACE 29764 --- [https-jsse-nio-443-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/styleScripts/script.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.582 TRACE 29764 --- [https-jsse-nio-443-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.584 TRACE 29764 --- [https-jsse-nio-443-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.585 TRACE 29764 --- [https-jsse-nio-443-exec-8] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.585 DEBUG 29764 --- [https-jsse-nio-443-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.589 TRACE 29764 --- [https-jsse-nio-443-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/styleScripts/bootstrap.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.590 TRACE 29764 --- [https-jsse-nio-443-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.591 TRACE 29764 --- [https-jsse-nio-443-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.597 TRACE 29764 --- [https-jsse-nio-443-exec-5] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.598 DEBUG 29764 --- [https-jsse-nio-443-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.602 TRACE 29764 --- [https-jsse-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/logo_title.png", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2022-01-02 15:39:30.603 TRACE 29764 --- [https-jsse-nio-443-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler [classpath [templates/], ServletContext [/]]] and 4 interceptors
+2022-01-02 15:39:30.605 TRACE 29764 --- [https-jsse-nio-443-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Applying default cacheSeconds=0
+2022-01-02 15:39:30.617 TRACE 29764 --- [https-jsse-nio-443-exec-7] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.619 DEBUG 29764 --- [https-jsse-nio-443-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:39:30.623 TRACE 29764 --- [https-jsse-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2022-01-02 15:39:30.625 DEBUG 29764 --- [https-jsse-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2022-01-02 15:40:37.918  INFO 29764 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-02 15:40:37.919  INFO 29764 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-01-02 15:40:37.925  INFO 29764 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.

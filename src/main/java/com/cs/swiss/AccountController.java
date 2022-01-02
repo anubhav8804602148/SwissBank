@@ -1,6 +1,9 @@
 package com.cs.swiss;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class AccountController {
 	
 	@Autowired
 	private UserRepository userRepo;
+
+	@Autowired
+	private UserLogRepository userLogRepo;
 
 	@RequestMapping("/accounts")
 	public @ResponseBody List<Account> getAccounts(){
@@ -124,7 +130,16 @@ public class AccountController {
 			model.addAttribute("errorMessage","You already have an account of the provided type");
 			return "error";
 		}
-		
+		UserLog userLog = new UserLog();
+		userLog.setCreatedDate(userLogRepo.findUserLogByEmail(user.getEmail()).get(0).getCreatedDate());
+		userLog.setLastPassword(user.getPassword());
+		userLog.setEmail(user.getPassword());
+		userLog.setLastUpdatedDate(java.time.LocalDateTime.now().toString());
+		userLog.setLastUpdatedUserId(
+				SecurityContextHolder.getContext().getAuthentication().getName()
+		);
+		user.setPassword(userRepo.findByEmail(user.getEmail()).get(0).getPassword());
+		userLogRepo.save(userLog);
 		userRepo.save(user);
 		accountRepo.save(account);
 		return "AccountSummary";

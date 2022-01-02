@@ -1,6 +1,7 @@
 package com.cs.swiss;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class ApplicationController {
 	 *  "/accountSummary"
 	 */
 
+	@Autowired 
+	UserLogRepository userLogRepo;
+	
 	@Autowired
 	UserRepository userRepo;
 	@Autowired
@@ -36,14 +40,24 @@ public class ApplicationController {
 	}
 	
 	@PostMapping("/processRegistration")
-	public String processRegistrationForm(User user) {
+	public String processRegistrationForm(User user, Model model) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
+		UserLog userLog = new UserLog();
+		userLog.setCreatedDate(java.time.LocalDateTime.now().toString());
+		userLog.setEmail(user.getEmail());
+		userLog.setLastUpdatedDate(java.time.LocalDateTime.now().toString());
+		userLog.setLastUpdatedUserId(
+			SecurityContextHolder.getContext().getAuthentication().getName()
+		);
+		userLog.setLastPassword(user.getPassword());
 		try{
 			userRepo.save(user);
+			userLogRepo.save(userLog);
 			return "registerSuccess";
 		}
 		catch(Exception ex) {
+			model.addAttribute("errorMessage", ex.getMessage());
 			return "error";
 		}
 	}

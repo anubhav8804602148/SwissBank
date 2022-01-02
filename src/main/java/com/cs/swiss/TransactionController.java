@@ -113,16 +113,25 @@ public class TransactionController {
 		}	
 		
 		@RequestMapping(value="/processTransaction",method=RequestMethod.POST)
-		public String processTransaction(Transaction transaction) {
+		public String processTransaction(Transaction transaction, Model model) {
 			Account fromAccount = accountRepo.findByAccountNumber(transaction.getFromAccountNumber()).get(0);
+			if(fromAccount.getBalance()<transaction.getDebitedAmount()) {
+				model.addAttribute("errorMessage", "Insufficient balance");
+				return "error";
+			}
 			long toAccountNumber = transaction.getAccountNumber();
 			Account toAccount = null;
 			try{
 				toAccount = accountRepo.findByAccountNumber(toAccountNumber).get(0);
 			}
 			catch(Exception ex) {
-				//External processing
-				return "error";
+				transaction.setStatus("PENDING");
+				transaction.setType("IMPS");
+				transaction.setDateOfTransaction(java.time.LocalDateTime.now().toString());
+				fromAccount.setBalance(fromAccount.getBalance()-transaction.getDebitedAmount());
+				accountRepo.save(fromAccount);
+				transactionRepo.save(transaction);
+				return "TransactionDetails";
 			}
 			Transaction toTransaction = new Transaction();
 			if(!transaction.getIFSCCode().equals("SWBA0000123")) return "error";
@@ -145,5 +154,68 @@ public class TransactionController {
 			accountRepo.save(toAccount);
 			accountRepo.save(fromAccount);
 			return "TransactionDetails";
+		}
+		
+		@RequestMapping(value="/addBalance",method=RequestMethod.GET)
+		public String addBalance(Model model) {
+			model.addAttribute("transaction", new Transaction());
+			model.addAttribute("accounts",
+					accountRepo.findByUserId(SecurityContextHolder.getContext()
+									.getAuthentication()
+									.getName()
+					)
+					.stream()
+					.map(acc -> acc.getAccount_number())
+					.collect(Collectors.toList())				
+			);
+			return "AddBalance";
+			
+		}
+		
+		@RequestMapping(value="/processAddBalance", method=RequestMethod.POST)
+		public String processAddBalance(Transaction transaction) {
+			transaction.setApprovalRequired(true);
+			transaction.setApproved(false);
+			transaction.setDateOfTransaction(java.time.LocalDateTime.now().toString());
+			transaction.setStatus("PENDING");
+			transaction.setType("NEFT");
+			transactionRepo.save(transaction);
+			return "AccountSummary";
+		}
+		
+		@RequestMapping(value="/approve", method=RequestMethod.GET)
+		public String showApprovalPage(Model model) {
+			 String email = SecurityContextHolder.getContext().getAuthentication().getName();
+			 if(!userRepo.findByEmail(email).get(0).getDesignation().equals("ADMIN")) {
+				 model.addAttribute("errorMessage", email+" is not authorised to view this page");
+				 return "error";
+			 }
+			 List<Transaction> transactions = new ArrayList<Transaction>();
+			 transactions.addAll(
+					 transactionRepo
+					 	.findAll()
+					 	.stream()
+					 	.filter(tran -> tran.isApprovalRequired() & !tran.isApproved())
+					 	.collect(Collectors.toList()));
+			 model.addAttribute("transactions", transactions);
+			 model.addAttribute("countOfTransaction", transactions.size());
+			 return "ApprovalPage";
+			 
+		}
+
+		@RequestMapping(value="/processApproveTransaction", method=RequestMethod.POST)
+		public String approveTransaction(@RequestParam("transactionId") int id, Model model) {
+			Transaction transaction = transactionRepo.findById(id).get(0);
+			transaction.setApproved(true);
+			transactionRepo.save(transaction);
+			return "ApprovalPage";
+		}
+		
+		@RequestMapping(value="/processRejectTransaction", method=RequestMethod.POST)
+		public String rejectTransaction(@RequestParam("transactionId") int id, Model model) {
+			Transaction transaction = transactionRepo.findById(id).get(0);
+			transaction.setStatus("REJECTED");
+			transactionRepo.save(transaction);
+			return "ApprovalPage";
 		}
 }

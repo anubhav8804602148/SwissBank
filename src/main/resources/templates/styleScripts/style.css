@@ -1,6 +1,7 @@
-form{
+form, .approvalSection{
 	background-color:white;
 	padding:15px;	
+	
 }
 .row{
 	padding:5px;
@@ -32,7 +33,7 @@ form{
 	text-align:center;
 }
 .loggedInUserData{
-	position:fixed;
+	position:absolute;
 	top:5%;
 	right:5%;
 	color:white;
@@ -109,38 +110,16 @@ header > img{
 	font-size:20px;
 }
 
-/* 
-.bodyHeaderIcon{
-	position: fixed;
-	height: 70px;
-	border-radius: 50%;
-	left:250px;
+.subAccount{
+	display:none;
+}
+.AccountButton:hover > .subAccount{
+	display:block;
+}
+.approvalSection{
+	border-radius:10%;
 }
 
-header{
-	margin-left: 8vw;
-	border-radius: 30%;
-	border-color: black;
-	border-style:solid ;
-	width: 380px;
-	height: 200px;
-	background-image: linear-gradient(to bottom, rgb(166, 206, 243), rgb(0, 117, 222));
+.oneButtonForm{
+	display:inline;
 }
-
-.bodyHeaderMessage{
-	position: fixed;
-	top:45px;
-	left:135px;
-	font-size: 70px;
-	font-family: "Times New Roman", Times, serif;
-	padding:15px;
-}
-.bodyHeaderMessage > .bankSlogan{
-	font-size:20px;
-	text-decoration:overline underline;
-	color:yellow;
-}
-
-.container > header{
-	margin-left:3.5vw;
-} */

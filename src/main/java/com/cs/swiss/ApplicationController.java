@@ -51,15 +51,17 @@ public class ApplicationController {
 			SecurityContextHolder.getContext().getAuthentication().getName()
 		);
 		userLog.setLastPassword(user.getPassword());
+		
 		try{
 			userRepo.save(user);
 			userLogRepo.save(userLog);
-			return "registerSuccess";
 		}
 		catch(Exception ex) {
 			model.addAttribute("errorMessage", ex.getMessage());
 			return "error";
 		}
+		CustomEmailService.sendmail("User Registered : "+userRepo.findByEmail(user.getEmail()).get(0).getId(), user.getEmail(), user.toString());
+		return "registerSuccess";
 	}
 	@GetMapping("/error")
 	public String showError() {

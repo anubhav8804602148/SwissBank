@@ -28,9 +28,13 @@
 			<nav>
 				<div class="acionTab btn-group-vertical">
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/'|">Home</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/createNewAccount'|">Create New Account</button>
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/accountSummary'|">Account Summary</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/updateAccount'|">Account Update</button>		
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/approve'|">Approve Transactions</button>				
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transactionsSummary'|">Transactions</button>
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transferFunds'|">Transfer Fund</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/feedback'|">Support and Feedback</button>
 				</div>
 			</nav>
 		</div>

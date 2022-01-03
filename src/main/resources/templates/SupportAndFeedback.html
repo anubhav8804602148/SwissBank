@@ -12,7 +12,6 @@
     <title>Home | Swiss Bank</title>
 </head>
 <body>
-	
 	<header>
 		<img src="logo_title.png">
 	</header>
@@ -39,41 +38,25 @@
 			</nav>
 		</div>
 		<div class="menuTab col-lg-8">
-			<form method="POST" class="transactMoney" th:action="@{/processAddBalance}" th:object="${transaction}">
-					<div class="row"><h1>Fund Transfer</h1></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">To Account</label>
-					<select class="col-lg-6 col-sm-6" th:field="*{accountNumber}">
-						<option th:each="account : ${accounts}" th:value="${account}" th:text="${account}"></option>
-					</select></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">From Account Number</label>
-						<input 
-							class="col-lg-6 col-sm-6" 
-							type="text" 
-							pattern="[0-9]{8,20}"
-							title="Account number can only have numbers. Please mail us if its different for you"
-							placeholder="Enter  Account Number" 
-							th:field="*{fromAccountNumber}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">IFSC Code</label>
-						<input 
-							class="col-lg-6 col-sm-6" 
-							type="text" 
-							placeholder="Enter IFSC Code" 
-							pattern="[A-Z]{4}[0-9]{7}"
-							title="IFSC code is of form AAAA0000000. Please mail us if its different for you"
-							th:field="*{IFSCCode}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4">Amount</label>
-						<input 
-							class="col-lg-6 col-sm-6" 
-							type="number" 
-							min="1"
-							title="You want to transfer less than 1? Really?"
-							placeholder="Enter Amount" 
-							th:field="*{creditedAmount}"></div>
-					<div class="row"><label class="col-lg-4 col-sm-4"></label>
-						<input 
-							class="col-lg-4 col-sm-4" 
-							type="submit" 
-							value="Transfer"></div>
+			<form th:action="@{/saveFeedback}" method="POST" th:object="${feedback}">
+				<label>Message to Support</label><br>
+				<input style="width:100%;height:100px;" maxlength="255" th:field="*{message}" required><br>
+				<label>Rating</label>
+				<input type="radio" value=1 name=1 th:field="*{rating}"><label>1<span>&#9733;</span></label>
+				<input type="radio" value=2 name=2 th:field="*{rating}"><label>2<span>&#9733;</span></label>
+				<input type="radio" value=3 name=3 th:field="*{rating}"><label>3<span>&#9733;</span></label>
+				<input type="radio" value=4 name=4 th:field="*{rating}"><label>4<span>&#9733;</span></label>
+				<input type="radio" value=5 name=5 th:field="*{rating}"><label>5<span>&#9733;</span></label><br>
+				<select th:field="*{category}">
+					<option value="Praise">Praise</option>
+					<option value="Technical Complaint">Technical Complaint</option>
+					<option value="Business Complaint">Business Complaint</option>
+					<option value="View issue">View issue</option>
+					<option value="Financial issue">Financial issue</option>
+					<option value="Other">Other</option>
+				</select><br><br>
+				<p style="font-style:italic;"><input type="checkbox" th:field="*{consentForSharingUserId}">Would you like us to know you submitted this?Please make sure to select this in case of any user specific complaint</p>
+				<input type="submit" value="submit">
 			</form>
 		</div>
 	</div>

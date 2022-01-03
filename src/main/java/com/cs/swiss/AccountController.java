@@ -1,9 +1,6 @@
 package com.cs.swiss;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,6 +116,7 @@ public class AccountController {
 	@RequestMapping(value="/processNewAccount", method=RequestMethod.POST)
 	public String processNewAccount(User user, Model model) {
 		Account account = new Account(user.getEmail());
+		String cat = user.getTempString();
 		account.setCategory(user.getTempString());
 		user.setTempString("");
 		List<Account> existingAccounts = accountRepo
@@ -132,6 +130,43 @@ public class AccountController {
 		}
 		UserLog userLog = new UserLog();
 		userLog.setCreatedDate(userLogRepo.findUserLogByEmail(user.getEmail()).get(0).getCreatedDate());
+		userLog.setEmail(user.getEmail());
+		userLog.setLastUpdatedDate(java.time.LocalDateTime.now().toString());
+		userLog.setLastUpdatedUserId(
+				SecurityContextHolder.getContext().getAuthentication().getName()
+		);
+		user.setPassword(userRepo.findByEmail(user.getEmail()).get(0).getPassword());
+		userLog.setLastPassword(user.getPassword());
+		userLogRepo.save(userLog);
+		userRepo.save(user);
+		accountRepo.save(account);
+		Account newAccount = accountRepo.findByUserId(user
+				.getEmail())
+				.stream()
+				.filter(acc -> acc.getCategory()
+						.equals(cat))
+				.collect(Collectors.toList()).get(0);
+		CustomEmailService.sendmail("Account Created : "+newAccount.getAccount_number(), newAccount.getUserId(), user.toString());
+		return "AccountSummary";
+	}
+
+	@RequestMapping(value="/updateAccount", method=RequestMethod.GET)
+	public String showUpdateAccountPage(Model model) {
+		model.addAttribute("user", userRepo.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
+		return "UpdateAccount";
+	}
+	
+
+	@RequestMapping(value="/processUpdateAccount", method=RequestMethod.POST)
+	public String processUpdateAccount(User user, Model model) {
+		Account account = accountRepo.findByUserId(user.getEmail()).get(0);
+		account.setCategory(user.getTempString());
+		user.setTempString("");
+		UserLog userLog = new UserLog();
+		userLog.setCreatedDate(userLogRepo
+				.findUserLogByEmail(user.getEmail())
+				.get(0)
+				.getCreatedDate());
 		userLog.setLastPassword(user.getPassword());
 		userLog.setEmail(user.getPassword());
 		userLog.setLastUpdatedDate(java.time.LocalDateTime.now().toString());
@@ -142,7 +177,7 @@ public class AccountController {
 		userLogRepo.save(userLog);
 		userRepo.save(user);
 		accountRepo.save(account);
+		CustomEmailService.sendmail("Account Created : "+account.getAccount_number(), account.getUserId(), user.toString());
 		return "AccountSummary";
-	}
-	
+	}	
 }

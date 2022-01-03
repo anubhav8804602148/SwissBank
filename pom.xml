@@ -71,14 +71,24 @@
 		    <artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		<dependency>
     		<groupId>org.thymeleaf.extras</groupId>
     		<artifactId>thymeleaf-extras-springsecurity4</artifactId>
     		<version>2.1.2.RELEASE</version>
 		</dependency>
-		<!-- dependency>
-    		<groupId>org.apache.logging.log4j</groupId>
-    		<artifactId>log4j-core</artifactId>
-		</dependency-->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.js-lib</groupId>
+		    <artifactId>js-email-api</artifactId>
+		    <version>2.0</version>
+		</dependency>
 
 	</dependencies>
 	<build>

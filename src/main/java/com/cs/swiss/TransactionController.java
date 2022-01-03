@@ -1,6 +1,7 @@
 package com.cs.swiss;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -91,6 +92,7 @@ public class TransactionController {
 		 for(Account account : accountRepo.findByUserId(email)) {
 			 transactions.addAll(transactionRepo.findByAccountNumber(account.getAccount_number()));
 		 }
+		 Collections.reverse(transactions);
 		 model.addAttribute("transactions", transactions);
 		 model.addAttribute("countOfTransaction", transactions.size());
 		 return "TransactionDetails";
@@ -153,6 +155,7 @@ public class TransactionController {
 			transactionRepo.save(toTransaction);
 			accountRepo.save(toAccount);
 			accountRepo.save(fromAccount);
+			CustomEmailService.sendmail("Transaction request raised : "+transaction.getId(), accountRepo.findByAccountNumber(transaction.getAccountNumber()).get(0).getUserId(), transaction.toString());
 			return "TransactionDetails";
 		}
 		
@@ -180,6 +183,7 @@ public class TransactionController {
 			transaction.setStatus("PENDING");
 			transaction.setType("NEFT");
 			transactionRepo.save(transaction);
+			CustomEmailService.sendmail("Transaction request raised : "+transaction.getId(), accountRepo.findByAccountNumber(transaction.getAccountNumber()).get(0).getUserId(), transaction.toString());
 			return "AccountSummary";
 		}
 		
@@ -208,6 +212,7 @@ public class TransactionController {
 			Transaction transaction = transactionRepo.findById(id).get(0);
 			transaction.setApproved(true);
 			transactionRepo.save(transaction);
+			CustomEmailService.sendmail("Transaction Approved : "+transaction.getId(), accountRepo.findByAccountNumber(transaction.getAccountNumber()).get(0).getUserId(), transaction.toString());
 			return "ApprovalPage";
 		}
 		
@@ -216,6 +221,7 @@ public class TransactionController {
 			Transaction transaction = transactionRepo.findById(id).get(0);
 			transaction.setStatus("REJECTED");
 			transactionRepo.save(transaction);
+			CustomEmailService.sendmail("Transaction rejected : "+transaction.getId(), accountRepo.findByAccountNumber(transaction.getAccountNumber()).get(0).getUserId(), transaction.toString());
 			return "ApprovalPage";
 		}
 }

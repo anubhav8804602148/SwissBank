@@ -28,23 +28,28 @@
 			<nav>
 				<div class="acionTab btn-group-vertical">
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/'|">Home</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/createNewAccount'|">Create New Account</button>
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/accountSummary'|">Account Summary</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/updateAccount'|">Account Update</button>		
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/approve'|">Approve Transactions</button>				
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transactionsSummary'|">Transactions</button>
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/transferFunds'|">Transfer Fund</button>
+				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/feedback'|">Support and Feedback</button>
 				</div>
 			</nav>
 		</div>
 		<div class="menuTab col-lg-8">
 			<div th:if="${countOfTransaction!=0}">
-				<div class="AllTransactionDetails">
-					<div>
-						<label>Filter Criteria</label><input type="search" placeholder="Search">
-						<div th:each="transaction : ${transactions}">
+				<div>
+						<label>Filter Criteria</label><input id="searchVal" type="search" placeholder="Search"><button id="searchButton" onClick="search()">Click</button>
+						
+					<div id="AllTransactionDetails">
+						<div class="approvalSection" th:each="transaction : ${transactions}">
 							<div class="row"><label class="col-lg-4">Id</label><label class="col-lg-4" th:text="${transaction.id}" th:value="${transactionId}"></label></div>
 							<div class="row"><label class="col-lg-4">Account</label><label class="col-lg-4" th:text="${transaction.accountNumber}"></label></div>
 							<div class="row"><label class="col-lg-4">Date of transaction</label><label class="col-lg-4" th:text="${transaction.dateOfTransaction}"></label></div>
 							<div class="row"><label class="col-lg-4">Amount</label><label class="col-lg-4" th:text="${transaction.creditedAmount}"></label></div>
-							<form th:action="@{/processApproveTransaction(transactionId=${transaction.id})}" method="POST"><input type="submit" value="approve"></form><form th:action="@{/processRejectTransaction(transactionId=${transaction.id})}" method="POST"><input type="submit" value="  reject  "></form>
+							<form class="oneButtonForm" th:action="@{/processApproveTransaction(transactionId=${transaction.id})}" method="POST"><input type="submit" value="approve"></form><form class="oneButtonForm" th:action="@{/processRejectTransaction(transactionId=${transaction.id})}" method="POST"><input type="submit" value="  reject  "></form>
 						</div>
 					</div>
 				</div>
@@ -57,4 +62,18 @@
 		</div>
 	</div>
 </body>
+<script>
+function search(){
+	var searchval = document.getElementById("searchVal").value;
+	var allTrans = document.getElementById("AllTransactionDetails").children;
+	for(var i=0;i<allTrans.length;i++){
+		if(!allTrans[i].innerHTML.includes(searchval)) allTrans[i].style.display="none";
+	}
+	if(searchval===""){
+		for(var i=0;i<allTrans.length;i++){
+			allTrans[i].style.display="block";
+		}
+	}
+}
+</script>
 </html>

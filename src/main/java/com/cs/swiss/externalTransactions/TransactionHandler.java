@@ -8,8 +8,8 @@ import java.sql.Statement;
 
 public class TransactionHandler {
 	private String url;
-	TransactionHandler(){
-		System.out.println("Starting another round . . .");
+	public TransactionHandler(){
+		System.out.println("Checking any approved transactions for processing . . .");
 		url = "jdbc:mysql://localhost:3306/swissbank?allowPublicKeyRetrieval=true&useSSL=false";
         String user = "anubhav";
         String password = "anubhav";
@@ -46,7 +46,8 @@ public class TransactionHandler {
         }
 		System.out.println("Done for this round. Sleeping for 100 sec now.");
 	}
-	public static void main(String ar[]) {
+	public static void runHandler() {
+
 		while(true) {
 			new TransactionHandler();
 			try {

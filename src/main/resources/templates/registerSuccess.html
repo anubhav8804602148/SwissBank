@@ -17,8 +17,11 @@
 		<img src="logo_title.png">
 	</header>
 	<div class="loggedInUserData">
-		<form class="logoutForm" th:action="@{/login}">
-			<input type="submit" value="Sign In">
+		<form method="POST" class="logoutForm" th:action="@{/logout}">		
+			<div class="col-lg-8">
+				<img id="userDP" class="userProfilePic" th:src="${'userImage/'+user.image}">
+			</div>
+			<input type="submit" value="logout">
 		</form>
 	</div>
 	<div class="successMessage"><h1>Successfully Registered!</h1></div>

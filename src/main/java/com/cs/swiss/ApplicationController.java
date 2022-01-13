@@ -5,8 +5,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ApplicationController {
@@ -30,7 +33,9 @@ public class ApplicationController {
 	AccountRepository accountRepo;
 
 	@GetMapping("")
-	public String welcomeUser() {
+	public String welcomeUser(Model model) {
+		model.addAttribute("user", userRepo.findByEmail(
+				SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 		return "welcome";
 	}
 	@GetMapping("/register")
@@ -40,7 +45,10 @@ public class ApplicationController {
 	}
 	
 	@PostMapping("/processRegistration")
-	public String processRegistrationForm(User user, Model model) {
+	public String processRegistrationForm(User user, Model model, @RequestParam("userImage") MultipartFile multipartFile) {
+		System.out.println(
+				java.time.LocalDateTime.now().toString()+
+				"] Processing for "+user.getEmail());
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
 		UserLog userLog = new UserLog();
@@ -51,6 +59,10 @@ public class ApplicationController {
 			SecurityContextHolder.getContext().getAuthentication().getName()
 		);
 		userLog.setLastPassword(user.getPassword());
+		
+		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		user.setImage(fileName);
+		FileUploadUtil.saveFile("userImage/",fileName, multipartFile);
 		
 		try{
 			userRepo.save(user);

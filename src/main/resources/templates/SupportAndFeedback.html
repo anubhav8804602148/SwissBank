@@ -18,7 +18,10 @@
 	<div class="loggedInUserData">
 		[[${#request.userPrincipal.principal.fullName}]]<br>
 		[[${#request.userPrincipal.principal.additionalDetails}]]<br>
-		<form method="POST" class="logoutForm" th:action="@{/logout}">
+		<form method="POST" class="logoutForm" th:action="@{/logout}">		
+			<div class="col-lg-8">
+				<img id="userDP" class="userProfilePic" th:src="${'userImage/'+user.image}">
+			</div>
 			<input type="submit" value="logout">
 		</form>
 	</div>
@@ -55,7 +58,7 @@
 					<option value="Financial issue">Financial issue</option>
 					<option value="Other">Other</option>
 				</select><br><br>
-				<p style="font-style:italic;"><input type="checkbox" th:field="*{consentForSharingUserId}">Would you like us to know you submitted this?Please make sure to select this in case of any user specific complaint</p>
+				<p style="font-style:italic;"><input type="checkbox" th:field="*{consentForSharingUserId}">Would you like us to know "you" submitted this?Please make sure to select this in case of any user specific complaint</p>
 				<input type="submit" value="submit">
 			</form>
 		</div>

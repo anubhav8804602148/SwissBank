@@ -123,3 +123,11 @@ header > img{
 .oneButtonForm{
 	display:inline;
 }
+
+.userProfilePic{
+	height: auto;
+	width: auto;
+	max-height: 80pt;
+	max-width: 80pt;
+	object-fit: contain;
+}

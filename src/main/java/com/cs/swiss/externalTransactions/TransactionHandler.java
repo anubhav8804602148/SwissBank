@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class TransactionHandler {
 	private String url;
 	public TransactionHandler(){
-		System.out.println("Checking any approved transactions for processing . . .");
+		System.out.println(java.time.LocalDateTime.now().toString().replace("T", " ")+"] Checking any approved transactions for processing . . .");
 		url = "jdbc:mysql://localhost:3306/swissbank?allowPublicKeyRetrieval=true&useSSL=false";
         String user = "anubhav";
         String password = "anubhav";

@@ -1,10 +1,18 @@
 package com.cs.swiss;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.persistence.Column;  
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class User {
@@ -33,27 +41,40 @@ public class User {
 	
 	@Column
 	private String fathersName;
+	
 	@Column
 	private String address;
+	
 	@Column
 	private String currentAddress;
+	
 	@Column
 	private String aadhaarNumber;
+	
 	@Column
 	private String zipCode;
+	
 	@Column
 	private String maritialStatus;
+	
 	@Column
 	private String gender;
+	
 	@Column
 	private String qualification;
+	
 	@Column
 	private String occupation;
+	
 	@Column
 	private double salary=0;
+	
 	@Column
 	private String tempString="";
 
+	@Column
+	private String image;
+	
 	public User(){
 		
 	}
@@ -231,4 +252,18 @@ public class User {
 	public void setTempString(String tempString) {
 		this.tempString = tempString;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	public String getPhotosImagePath() {
+		if(image==null) return "default";
+		return "/userImage/"+id+"/"+image;
+	}
+
 }

@@ -19,7 +19,10 @@
 	<div class="loggedInUserData">
 		[[${#request.userPrincipal.principal.fullName}]]<br>
 		[[${#request.userPrincipal.principal.additionalDetails}]]<br>
-		<form method="POST" class="logoutForm" th:action="@{/logout}">
+		<form method="POST" class="logoutForm" th:action="@{/logout}">		
+			<div class="col-lg-8">
+				<img id="userDP" class="userProfilePic" th:src="${'userImage/'+user.image}">
+			</div>
 			<input type="submit" value="logout">
 		</form>
 	</div>
@@ -38,9 +41,6 @@
 				<button type="button" class="btn btn-primary" th:onClick="|window.location.href='/feedback'|">Support and Feedback</button>
 				</div>
 			</nav>
-		</div>
-		<div class="menuTab col-lg-8">
-			<h1 style="color:white;">I will put all latest offers here. Later. </h1>
 		</div>
 	</div>
 </body>

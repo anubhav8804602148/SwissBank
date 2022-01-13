@@ -97,6 +97,8 @@ public class AccountController {
 
 	@GetMapping("/accountSummary")
 	public String showAccountSummary(Model model, String error, String logout) {
+		model.addAttribute("user", userRepo.findByEmail(
+				SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 		String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		model.addAttribute("email", email);
 		List<Account> accountList = accountRepo.findByUserId(email);

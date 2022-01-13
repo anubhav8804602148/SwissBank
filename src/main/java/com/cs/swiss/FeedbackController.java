@@ -1,7 +1,5 @@
 package com.cs.swiss;
 
-import java.util.Comparator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,8 +13,13 @@ public class FeedbackController {
 	@Autowired
 	FeedbackRepository feedbackRepo;
 	
+	@Autowired
+	UserRepository userRepo;
+	
 	@RequestMapping(value="/feedback",method=RequestMethod.GET)
 	public String showFeedbackForm(Model model) {
+		model.addAttribute("user", userRepo.findByEmail(
+				SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 		model.addAttribute("feedback", new Feedback());
 		return "SupportAndFeedback";
 	}

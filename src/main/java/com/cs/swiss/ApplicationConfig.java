@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class ApplicationConfig  extends WebSecurityConfigurerAdapter{
+public class ApplicationConfig  extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -47,7 +47,6 @@ public class ApplicationConfig  extends WebSecurityConfigurerAdapter{
 			.antMatchers("/register").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/transactions**").authenticated()
-			.antMatchers("/users**").authenticated()
 			.antMatchers("/").authenticated()
 			.antMatchers("/accounts**").authenticated()
 			.anyRequest().permitAll()

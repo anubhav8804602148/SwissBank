@@ -32,8 +32,8 @@ public class CustomEmailService {
 			 * Sending all mail to my secondary mail id for now
 			 * 
 			 */
-			// msg.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recepient));
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("anubhavsharmarangers@gmail.com"));
+			msg.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recepient));
+			//msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("anubhavsharmarangers@gmail.com"));
 			msg.setSubject(subject);
 			msg.setContent(body, "text/html");
 			Transport.send(msg);

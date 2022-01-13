@@ -87,6 +87,8 @@ public class TransactionController {
 	 
 	 @RequestMapping(value="/transactionsSummary", method=RequestMethod.GET)
 	 public String showTransactionDetails(Model model) {
+		model.addAttribute("user", userRepo.findByEmail(
+					SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 		 String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		 List<Transaction> transactions = new ArrayList<Transaction>();
 		 for(Account account : accountRepo.findByUserId(email)) {
@@ -101,6 +103,8 @@ public class TransactionController {
 
 		@RequestMapping(value="/transferFunds",method=RequestMethod.GET)
 		public String showFundTransferPage(Model model) {
+			model.addAttribute("user", userRepo.findByEmail(
+					SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 			model.addAttribute("accounts",
 					accountRepo.findByUserId(SecurityContextHolder.getContext()
 									.getAuthentication()
@@ -161,6 +165,8 @@ public class TransactionController {
 		
 		@RequestMapping(value="/addBalance",method=RequestMethod.GET)
 		public String addBalance(Model model) {
+			model.addAttribute("user", userRepo.findByEmail(
+					SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 			model.addAttribute("transaction", new Transaction());
 			model.addAttribute("accounts",
 					accountRepo.findByUserId(SecurityContextHolder.getContext()
@@ -189,6 +195,8 @@ public class TransactionController {
 		
 		@RequestMapping(value="/approve", method=RequestMethod.GET)
 		public String showApprovalPage(Model model) {
+			model.addAttribute("user", userRepo.findByEmail(
+					SecurityContextHolder.getContext().getAuthentication().getName()).get(0));
 			 String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			 if(!userRepo.findByEmail(email).get(0).getDesignation().equals("ADMIN")) {
 				 model.addAttribute("errorMessage", email+" is not authorised to view this page");

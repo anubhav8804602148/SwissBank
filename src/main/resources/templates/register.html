@@ -25,8 +25,20 @@
 	    	<div class="emptyArea col-lg-4">
 	    	</div>
 	    	<div class="Form col-lg-4 col-sm-4">
-				<form th:action="@{/processRegistration}" method="POST" th:object="${user}" class="registerForm">
+				<form th:action="@{/processRegistration}" 
+					method="POST" 
+					th:object="${user}" 
+					enctype="multipart/form-data"
+					class="registerForm">
 					<div class="row"><h1>Register</h1></div>
+					<label class="col-lg-12 col-sm-12">Upload Image</label>
+					<div class="row">
+						<input 
+							id="inputUserDp"
+							class="col-lg-12 col-sm-12" 
+							type="file" 
+							name="userImage" 
+							accept="image/png"></div>
 					<div class="row"><label class="col-lg-4 col-sm-4">First Name</label>
 						<input 
 							pattern="[A-Za-z]{3,20}" 

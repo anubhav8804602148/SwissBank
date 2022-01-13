@@ -8,9 +8,9 @@ import com.cs.swiss.externalTransactions.TransactionHandler;
 public class SwissBankApplication {
 	
 	public static void main(String[] args) {
-		new Thread(()->{
+		/*new Thread(()->{
 			TransactionHandler.runHandler();
-		}).start();
+		}).start();*/
 		SpringApplication.run(SwissBankApplication.class, args);
 	}
 }

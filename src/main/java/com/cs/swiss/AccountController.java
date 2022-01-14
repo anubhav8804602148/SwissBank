@@ -138,6 +138,7 @@ public class AccountController {
 				SecurityContextHolder.getContext().getAuthentication().getName()
 		);
 		user.setPassword(userRepo.findByEmail(user.getEmail()).get(0).getPassword());
+		user.setImage(userRepo.findByEmail(user.getEmail()).get(0).getImage());
 		userLog.setLastPassword(user.getPassword());
 		userLogRepo.save(userLog);
 		userRepo.save(user);
@@ -176,6 +177,7 @@ public class AccountController {
 				SecurityContextHolder.getContext().getAuthentication().getName()
 		);
 		user.setPassword(userRepo.findByEmail(user.getEmail()).get(0).getPassword());
+		user.setImage(userRepo.findByEmail(user.getEmail()).get(0).getImage());
 		userLogRepo.save(userLog);
 		userRepo.save(user);
 		accountRepo.save(account);

@@ -1,18 +1,10 @@
 package com.cs.swiss;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.persistence.Column;  
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity
 public class User {
@@ -142,28 +134,6 @@ public class User {
 	}
 	
 	
-	public String toString() {
-		return toString(false);
-	}
-	public String toString(boolean showPass) {
-		if(showPass) return String.format(
-			"{Id: %d, fname: %s, lname: %s, email: %s, password: %s, designation: %s, role: %s}",
-			this.id,
-			this.fname,
-			this.lname,
-			this.email,
-			this.password,
-			this.designation,
-			this.role);
-		return String.format(
-				"{id: %d, fname: %s, lname: %s, email: %s, designation: %s, role: %s}",
-			this.id,
-			this.fname,
-			this.lname,
-			this.email,
-			this.designation,
-			this.role);
-	}
 
 	public String getFathersName() {
 		return fathersName;
@@ -266,4 +236,47 @@ public class User {
 		return "/userImage/"+id+"/"+image;
 	}
 
+	@Override
+	public String toString() {
+		return toString(false);
+	}
+	public String toString(boolean showPass) {
+		String userString="{";
+		userString+= "\nUser Id: %d,";
+		userString+= "\nName: %s,";
+		userString+= "\nEmail: %s,";
+		userString+= "\nPassword: %s,";
+		userString+= "\nDesignation: %s,";
+		userString+= "\nAadhaar Number: %s,";
+		userString+= "\nPresent Address: %s,";
+		userString+= "\nPermanent Address: %s,";
+		userString+= "\nFather's Name: %s,";
+		userString+= "\nGender: %s,";
+		userString+= "\nMaritial Status: %s,";
+		userString+= "\nOccupation: %s,";
+		userString+= "\nQualification: %s,";
+		userString+= "\nRole: %s,";
+		userString+= "\nSalary: %f,";
+		userString+= "\nZip Code: %s";
+		userString+= "\n}";
+		return String.format(
+			userString,
+			this.id,
+			this.fname+this.lname,
+			this.email,
+			showPass?this.password:"Hidden",
+			this.designation,
+			this.aadhaarNumber,
+			this.currentAddress,
+			this.address,
+			this.fathersName,
+			this.gender,
+			this.maritialStatus,
+			this.occupation,
+			this.qualification,
+			this.role,
+			this.salary,
+			this.zipCode
+			);
+	}
 }

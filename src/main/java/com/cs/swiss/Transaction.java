@@ -125,4 +125,30 @@ public class Transaction {
 	public void setIFSCCode(String iFSCCode) {
 		IFSCCode = iFSCCode;
 	}
+	@Override
+	public String toString() {
+		String transaction="{";
+		transaction+= "\nTransaction Id: %d,";
+		transaction+= "\nFrom account Number: %d,";
+		transaction+= "\nTo Account Number: %d,";
+		transaction+= "\nCredited Amount: %d,";
+		transaction+= "\nDebited Amount: %d,";
+		transaction+= "\nIFSC Code: %s,";
+		transaction+= "\nTransaction Date: %s,";
+		transaction+= "\nStatus: %s,";
+		transaction+= "\nType: %s,";
+		transaction+= "\nApproval: %s";
+		transaction+= "\n}";
+		return String.format(transaction, 
+				this.id,
+				this.fromAccountNumber,
+				this.accountNumber,
+				this.creditedAmount,
+				this.debitedAmount,
+				this.IFSCCode,
+				this.dateOfTransaction,
+				this.status,
+				this.type,
+				this.approvalRequired&this.approved?"Approved":"Not Approved yet");
+	}
 }

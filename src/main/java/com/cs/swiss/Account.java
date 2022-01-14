@@ -101,4 +101,26 @@ public class Account {
 	public boolean validate() {	
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		String account = "{\n";
+		account+= "Account Number: %d,\n";
+		account+= "Category: %s,\n";
+		account+= "Balance: %f,\n";
+		account+= "Closure Date: %s,\n";
+		account+= "Created Date: %s,\n";
+		account+= "User Id: %d,\n";
+		account+= "Status: %s\n";
+		account+= "}";
+		
+		return String.format(account,
+				this.account_number,
+				this.category,
+				this.balance, 
+				this.closureDate,
+				this.createdDate,
+				this.userId,
+				this.isActive?"Active":"Inactive");
+	}
 }

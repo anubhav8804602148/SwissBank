@@ -76,5 +76,12 @@ public class Feedback {
 		this.category = category;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("{\nFeedback Id: %d,\nMessage: %s,\nRating: %d\n}", 
+				this.id,
+				this.message,
+				this.rating);
+	}
 	
 }

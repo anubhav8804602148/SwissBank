@@ -23,6 +23,14 @@ public class TransactionController {
 	/*
 	 *  "/transactions"
 	 *  "/transactions{id}"
+	 *  "/transactionsSummary"
+	 *  "/transferFunds"
+	 *  "/processTransaction"
+	 *  "/addBalance"
+	 *  "/processAddBalance"
+	 *  "/approve"
+	 *  "/processApproveTransaction"
+	 *  "/processRejectTransaction"
 	 */
 	
 	@Autowired

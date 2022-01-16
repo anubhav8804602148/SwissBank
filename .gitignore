@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## User Config File ##
+swissBankEnv.config
+
+## Logs ##
+*Log*
+*.log

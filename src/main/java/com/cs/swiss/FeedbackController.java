@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FeedbackController {
 	
+	/*
+	 * "/feedback"
+	 * "/saveFeedback"
+	 */
 	@Autowired
 	FeedbackRepository feedbackRepo;
 	

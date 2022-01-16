@@ -20,8 +20,11 @@ public class AccountController {
 	/*
 	 *	"/accounts"
 	 *	"/accounts/{id}"
+	 *  "/accountSummary"
 	 *  "/createNewAccount"
 	 *  "/processNewAccount"
+	 *  "/updateAccount"
+	 *  "/processUpdateAccount"
 	 */
 	
 	@Autowired

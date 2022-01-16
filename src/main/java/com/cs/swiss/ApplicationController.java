@@ -14,12 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class ApplicationController {
 	/*
-	 *  ""
+	 *  "/"
 	 *  "/register"
 	 *  "/processRegistration"
 	 *  "/error"
 	 *  "/login"
-	 *  "/accountSummary"
 	 */
 
 	@Autowired 

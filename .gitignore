@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ## User Config File ##
-!**/src/main/resources/application.properties
+!**/src/**/application.properties
 
 ## Logs ##
 *Log*

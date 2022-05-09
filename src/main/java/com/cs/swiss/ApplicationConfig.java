@@ -1,5 +1,6 @@
 package com.cs.swiss;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -14,6 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class ApplicationConfig  extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	InMemoryAuthenticationProvider inMemoryAuthenticationProvider;
+	
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new CustomUserDetailsService();
@@ -36,6 +40,7 @@ public class ApplicationConfig  extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
+		auth.authenticationProvider(inMemoryAuthenticationProvider);
 	}
 
 	@Override
